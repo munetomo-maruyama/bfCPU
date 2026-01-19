@@ -1,0 +1,119 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Thu Dec 11 12:02:50 2025
+[*]
+[dumpfile] "/media/psf/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/SIM/tb_QSPI_SRAM/tb.vcd"
+[dumpfile_mtime] "Thu Dec 11 12:02:38 2025"
+[dumpfile_size] 77506
+[savefile] "/media/psf/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/SIM/tb_QSPI_SRAM/tb.gtkw"
+[timestart] 670000
+[size] 1662 1005
+[pos] -27 -24
+*-22.121910 13350000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[sst_width] 278
+[signals_width] 251
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@22
+tb.tb_cycle_counter[31:0]
+@28
+tb.res
+tb.clk
+tb.U_QSPI_SRAM.BUS_TRANS
+tb.U_QSPI_SRAM.BUS_WRITE
+tb.U_QSPI_SRAM.BUS_HCLR
+@22
+tb.U_QSPI_SRAM.BUS_ADDR[15:0]
+tb.U_QSPI_SRAM.BUS_WDATA[7:0]
+tb.U_QSPI_SRAM.BUS_RDATA[7:0]
+@28
+tb.U_QSPI_SRAM.BUS_READY
+tb.U_QSPI_SRAM.req_read
+tb.U_QSPI_SRAM.req_hclr
+tb.U_QSPI_SRAM.req_wrte
+tb.U_QSPI_SRAM.addr_cont
+@23
+tb.rdata[7:0]
+@28
+tb.U_QSPI_SRAM.state[2:0]
+tb.U_QSPI_SRAM.state_next[2:0]
+@22
+tb.U_QSPI_SRAM.seq[3:0]
+@28
+tb.qspi_cs_n
+tb.qspi_sck
+@800022
+tb.qspi_sio[3:0]
+@28
+(0)tb.qspi_sio[3:0]
+(1)tb.qspi_sio[3:0]
+(2)tb.qspi_sio[3:0]
+(3)tb.qspi_sio[3:0]
+@1001200
+-group_end
+@28
+tb.U_QSPI_SRAM.QSPI_CS_N
+tb.U_QSPI_SRAM.QSPI_SCK
+@800022
+tb.U_QSPI_SRAM.QSPI_SIO_O[3:0]
+@28
+(0)tb.U_QSPI_SRAM.QSPI_SIO_O[3:0]
+(1)tb.U_QSPI_SRAM.QSPI_SIO_O[3:0]
+(2)tb.U_QSPI_SRAM.QSPI_SIO_O[3:0]
+(3)tb.U_QSPI_SRAM.QSPI_SIO_O[3:0]
+@1001200
+-group_end
+@800022
+tb.U_QSPI_SRAM.QSPI_SIO_E[3:0]
+@28
+(0)tb.U_QSPI_SRAM.QSPI_SIO_E[3:0]
+(1)tb.U_QSPI_SRAM.QSPI_SIO_E[3:0]
+(2)tb.U_QSPI_SRAM.QSPI_SIO_E[3:0]
+(3)tb.U_QSPI_SRAM.QSPI_SIO_E[3:0]
+@1001200
+-group_end
+@800022
+tb.U_QSPI_SRAM.QSPI_SIO_I[3:0]
+@28
+(0)tb.U_QSPI_SRAM.QSPI_SIO_I[3:0]
+(1)tb.U_QSPI_SRAM.QSPI_SIO_I[3:0]
+(2)tb.U_QSPI_SRAM.QSPI_SIO_I[3:0]
+(3)tb.U_QSPI_SRAM.QSPI_SIO_I[3:0]
+@1001200
+-group_end
+@22
+tb.U_M23LC512.MemoryByte00000[7:0]
+tb.U_M23LC512.MemoryByte00001[7:0]
+tb.U_M23LC512.MemoryByte00002[7:0]
+tb.U_M23LC512.MemoryByte00003[7:0]
+tb.U_M23LC512.MemoryByte00004[7:0]
+tb.U_M23LC512.MemoryByte00005[7:0]
+tb.U_M23LC512.MemoryByte00006[7:0]
+tb.U_M23LC512.MemoryByte00007[7:0]
+tb.U_M23LC512.MemoryByte08000[7:0]
+tb.U_M23LC512.MemoryByte08001[7:0]
+tb.U_M23LC512.MemoryByte08002[7:0]
+tb.U_M23LC512.MemoryByte08003[7:0]
+tb.U_M23LC512.MemoryByte08004[7:0]
+tb.U_M23LC512.MemoryByte08005[7:0]
+tb.U_M23LC512.MemoryByte08006[7:0]
+tb.U_M23LC512.MemoryByte08007[7:0]
+tb.U_M23LC512.MemoryByte0FFF8[7:0]
+tb.U_M23LC512.MemoryByte0FFF9[7:0]
+tb.U_M23LC512.MemoryByte0FFFA[7:0]
+tb.U_M23LC512.MemoryByte0FFFB[7:0]
+tb.U_M23LC512.MemoryByte0FFFC[7:0]
+tb.U_M23LC512.MemoryByte0FFFD[7:0]
+tb.U_M23LC512.MemoryByte0FFFE[7:0]
+tb.U_M23LC512.MemoryByte0FFFF[7:0]
+tb.U_M23LC512.MemoryByte0FFF8[7:0]
+tb.U_M23LC512.MemoryByte0FFF9[7:0]
+tb.U_M23LC512.MemoryByte0FFFA[7:0]
+tb.U_M23LC512.MemoryByte0FFFB[7:0]
+tb.U_M23LC512.MemoryByte0FFFC[7:0]
+tb.U_M23LC512.MemoryByte0FFFD[7:0]
+tb.U_M23LC512.MemoryByte0FFFE[7:0]
+tb.U_M23LC512.MemoryByte0FFFF[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

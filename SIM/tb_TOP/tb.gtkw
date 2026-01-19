@@ -1,0 +1,167 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Mon Jan  5 11:12:56 2026
+[*]
+[dumpfile] "/home/taka/ISHI_Kai/bfCPU/bfCPU/SIM/tb_TOP/tb.vcd"
+[dumpfile_mtime] "Mon Jan  5 11:12:50 2026"
+[dumpfile_size] 14560060
+[savefile] "/home/taka/ISHI_Kai/bfCPU/bfCPU/SIM/tb_TOP/tb.gtkw"
+[timestart] 0
+[size] 1854 1121
+[pos] -27 -24
+*-29.652769 33175000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.U_FPGA.
+[treeopen] tb.U_FPGA.U_TOP.
+[sst_width] 278
+[signals_width] 365
+[sst_expanded] 1
+[sst_vpaned_height] 336
+@22
+tb.tb_cycle_counter[31:0]
+@28
+tb.U_FPGA.U_TOP.RES_N
+tb.U_FPGA.U_TOP.CLK
+tb.U_FPGA.LED
+@200
+-QSPI RAM
+@28
+tb.U_FPGA.U_TOP.U_RAM.BUS_REQ
+tb.U_FPGA.U_TOP.U_RAM.BUS_WRITE
+@22
+tb.U_FPGA.U_TOP.U_RAM.BUS_ADDR[15:0]
+tb.U_FPGA.U_TOP.U_RAM.BUS_WDATA[7:0]
+tb.U_FPGA.U_TOP.U_RAM.BUS_RDATA[7:0]
+@29
+tb.U_FPGA.U_TOP.U_RAM.BUS_RDY
+@28
+tb.U_FPGA.QSPI_CS_N
+tb.U_FPGA.QSPI_SCK
+tb.U_FPGA.U_TOP.U_RAM.qspi_scke
+@22
+tb.U_FPGA.QSPI_SIO[3:0]
+@28
+tb.U_FPGA.U_TOP.U_RAM.state[2:0]
+@22
+tb.U_FPGA.U_TOP.U_RAM.seq[3:0]
+tb.U_FPGA.U_TOP.U_RAM.addr[15:0]
+@28
+tb.U_FPGA.U_TOP.U_RAM.addr_cont
+@200
+-UART
+@28
+tb.U_FPGA.U_TOP.UART_RXD
+tb.U_FPGA.U_TOP.UART_TXD
+@22
+tb.U_FPGA.U_TOP.U_UART.din[7:0]
+tb.U_FPGA.U_TOP.U_UART.dout[7:0]
+tb.U_FPGA.U_TOP.U_UART.div0[7:0]
+tb.U_FPGA.U_TOP.U_UART.div1[7:0]
+@200
+-CPU State
+@22
+tb.U_FPGA.U_TOP.U_CPU.pc[15:0]
+tb.U_FPGA.U_TOP.U_CPU.ptr[14:0]
+tb.U_FPGA.U_TOP.U_CPU.indent[15:0]
+tb.U_FPGA.U_TOP.U_CPU.if_code[3:0]
+tb.U_FPGA.U_TOP.U_CPU.state[4:0]
+tb.U_FPGA.U_TOP.U_CPU.seq[3:0]
+@28
+tb.U_FPGA.U_TOP.U_CPU.slot
+@200
+-CPU ALU
+@22
+tb.U_FPGA.U_TOP.U_CPU.aluinx[7:0]
+tb.U_FPGA.U_TOP.U_CPU.alufunc[3:0]
+tb.U_FPGA.U_TOP.U_CPU.aluout[7:0]
+@28
+tb.U_FPGA.U_TOP.U_CPU.aluzero
+@200
+-CPU Instr Fetch
+@28
+tb.U_FPGA.U_TOP.U_CPU.IF_RDY
+tb.U_FPGA.U_TOP.U_CPU.IF_REQ
+@22
+tb.U_FPGA.U_TOP.U_CPU.IF_ADDR[15:0]
+tb.U_FPGA.U_TOP.U_CPU.IF_CODE[3:0]
+@28
+tb.U_FPGA.U_TOP.U_CACHE.ic_v
+@22
+tb.U_FPGA.U_TOP.U_CACHE.ic_a[12:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_d[31:0]
+@200
+-CPU Data Access
+@28
+tb.U_FPGA.U_TOP.U_CPU.DM_RDY
+tb.U_FPGA.U_TOP.U_CPU.DM_REQ
+tb.U_FPGA.U_TOP.U_CPU.DM_WRITE
+@22
+tb.U_FPGA.U_TOP.U_CPU.DM_ADDR[14:0]
+tb.U_FPGA.U_TOP.U_CPU.DM_WDATA[7:0]
+tb.U_FPGA.U_TOP.U_CPU.DM_RDATA[7:0]
+@28
+tb.U_FPGA.U_TOP.U_CACHE.dc_v
+@22
+tb.U_FPGA.U_TOP.U_CACHE.dc_a[12:0]
+tb.U_FPGA.U_TOP.U_CACHE.dc_d[31:0]
+@200
+-CPU I/O Access
+@28
+tb.U_FPGA.U_TOP.U_CPU.IO_RDY
+tb.U_FPGA.U_TOP.U_CPU.IO_REQ
+tb.U_FPGA.U_TOP.U_CPU.IO_WRITE
+tb.U_FPGA.U_TOP.U_CPU.IO_ADDR[1:0]
+@22
+tb.U_FPGA.U_TOP.U_CPU.IO_WDATA[7:0]
+tb.U_FPGA.U_TOP.U_CPU.IO_RDATA[7:0]
+@200
+-Cache BUS Access
+@28
+tb.U_FPGA.U_TOP.U_CACHE.BUS_RDY
+tb.U_FPGA.U_TOP.U_CACHE.BUS_REQ
+tb.U_FPGA.U_TOP.U_CACHE.BUS_WRITE
+@22
+tb.U_FPGA.U_TOP.U_CACHE.BUS_ADDR[15:0]
+tb.U_FPGA.U_TOP.U_CACHE.BUS_WDATA[7:0]
+tb.U_FPGA.U_TOP.U_CACHE.BUS_RDATA[7:0]
+@200
+-Cache Memory
+-
+-
+-Data Memory
+@22
+tb.U_M23LC512.MemoryByte08000[7:0]
+tb.U_M23LC512.MemoryByte08001[7:0]
+tb.U_M23LC512.MemoryByte08002[7:0]
+tb.U_M23LC512.MemoryByte08003[7:0]
+tb.U_M23LC512.MemoryByte08004[7:0]
+tb.U_M23LC512.MemoryByte08005[7:0]
+tb.U_M23LC512.MemoryByte08006[7:0]
+tb.U_M23LC512.MemoryByte08007[7:0]
+tb.U_M23LC512.MemoryByte08008[7:0]
+tb.U_M23LC512.MemoryByte08009[7:0]
+tb.U_M23LC512.MemoryByte0800A[7:0]
+tb.U_M23LC512.MemoryByte0800B[7:0]
+tb.U_M23LC512.MemoryByte0800C[7:0]
+tb.U_M23LC512.MemoryByte0800D[7:0]
+tb.U_M23LC512.MemoryByte0800E[7:0]
+tb.U_M23LC512.MemoryByte0800F[7:0]
+tb.U_M23LC512.MemoryByte00000[7:0]
+tb.U_M23LC512.MemoryByte00001[7:0]
+tb.U_M23LC512.MemoryByte00002[7:0]
+tb.U_M23LC512.MemoryByte00003[7:0]
+tb.U_M23LC512.MemoryByte00004[7:0]
+tb.U_M23LC512.MemoryByte00005[7:0]
+tb.U_M23LC512.MemoryByte00006[7:0]
+tb.U_M23LC512.MemoryByte00007[7:0]
+tb.U_M23LC512.MemoryByte00008[7:0]
+tb.U_M23LC512.MemoryByte00009[7:0]
+tb.U_M23LC512.MemoryByte00010[7:0]
+tb.U_M23LC512.MemoryByte00011[7:0]
+tb.U_M23LC512.MemoryByte00012[7:0]
+tb.U_M23LC512.MemoryByte00013[7:0]
+tb.U_M23LC512.MemoryByte00014[7:0]
+tb.U_M23LC512.MemoryByte00015[7:0]
+tb.qspi_sio[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

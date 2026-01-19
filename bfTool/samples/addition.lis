@@ -1,0 +1,16 @@
+00 -    //====================================
+00 -    // Addition
+00 -    //====================================
+00 5    in    // ptr=0
+01 0    p++   // increment ptr
+02 5    in    // ptr=1
+03 1    p--   // decrement ptr
+04 6    begin // Loop
+05 3        dec // ptr=0
+06 0        p++ // increment ptr
+07 2        inc // ptr=1
+08 1        p-- // decrement ptr
+09 7    end
+0a 0    p++   // increment ptr
+0b 4    out   // ptr=1
+0c 8    reset // to pause simulation

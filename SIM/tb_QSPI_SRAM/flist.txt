@@ -1,0 +1,9 @@
++define+SIMULATION
++define+MYSIM
+
++incdir+${DIR_RTL_TBCH}
++incdir+${DIR_RTL_BODY}
+
+${DIR_RTL_TBCH}/tb.sv
+${DIR_RTL_BODY}/QSPI_SRAM/qspi_sram.sv
+${DIR_RTL_BODY}/QSPI_SRAM/23LC512.v

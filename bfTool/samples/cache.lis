@@ -1,0 +1,181 @@
+00 -    //====================================
+00 -    // Cache Test
+00 -    //====================================
+00 -    // ptr=0
+00 6    [
+01 2        +
+02 7    ]
+03 -    // ptr=1
+03 0    p++
+04 2    inc
+05 -    // ptr=2
+05 0    p++
+06 2    inc
+07 2    inc
+08 -    // ptr=3
+08 0    p++
+09 2    inc
+0a 2    inc
+0b 2    inc
+0c -    // ptr=4
+0c 0    p++
+0d 2    inc
+0e 2    inc
+0f 2    inc
+10 2    inc
+11 -    // ptr=5
+11 0    p++
+12 2    inc
+13 2    inc
+14 2    inc
+15 2    inc
+16 2    inc
+17 -    // ptr=6
+17 0    p++
+18 2    inc
+19 2    inc
+1a 2    inc
+1b 2    inc
+1c 2    inc
+1d 2    inc
+1e -    // ptr=7
+1e 0    p++
+1f 2    inc
+20 2    inc
+21 2    inc
+22 2    inc
+23 2    inc
+24 2    inc
+25 2    inc
+26 -    // ptr=8
+26 0    p++
+27 2    inc
+28 2    inc
+29 2    inc
+2a 2    inc
+2b 2    inc
+2c 2    inc
+2d 2    inc
+2e 2    inc
+2f -    // ptr=9
+2f 0    p++
+30 2    inc
+31 2    inc
+32 2    inc
+33 2    inc
+34 2    inc
+35 2    inc
+36 2    inc
+37 2    inc
+38 2    inc
+39 -    // ptr=10
+39 0    p++
+3a 2    inc
+3b 2    inc
+3c 2    inc
+3d 2    inc
+3e 2    inc
+3f 2    inc
+40 2    inc
+41 2    inc
+42 2    inc
+43 2    inc
+44 -    // ptr=11
+44 0    p++
+45 2    inc
+46 2    inc
+47 2    inc
+48 2    inc
+49 2    inc
+4a 2    inc
+4b 2    inc
+4c 2    inc
+4d 2    inc
+4e 2    inc
+4f 2    inc
+50 -    // ptr=12
+50 0    p++
+51 2    inc
+52 2    inc
+53 2    inc
+54 2    inc
+55 2    inc
+56 2    inc
+57 2    inc
+58 2    inc
+59 2    inc
+5a 2    inc
+5b 2    inc
+5c 2    inc
+5d -    // ptr=13
+5d 0    p++
+5e 2    inc
+5f 2    inc
+60 2    inc
+61 2    inc
+62 2    inc
+63 2    inc
+64 2    inc
+65 2    inc
+66 2    inc
+67 2    inc
+68 2    inc
+69 2    inc
+6a 2    inc
+6b -    // ptr=14
+6b 0    p++
+6c 2    inc
+6d 2    inc
+6e 2    inc
+6f 2    inc
+70 2    inc
+71 2    inc
+72 2    inc
+73 2    inc
+74 2    inc
+75 2    inc
+76 2    inc
+77 2    inc
+78 2    inc
+79 2    inc
+7a -    // ptr=15
+7a 0    p++
+7b 2    inc
+7c 2    inc
+7d 2    inc
+7e 2    inc
+7f 2    inc
+80 2    inc
+81 2    inc
+82 2    inc
+83 2    inc
+84 2    inc
+85 2    inc
+86 2    inc
+87 2    inc
+88 2    inc
+89 2    inc
+8a -    // ptr=16
+8a 0    p++
+8b 2    inc
+8c 2    inc
+8d 2    inc
+8e 2    inc
+8f 2    inc
+90 2    inc
+91 2    inc
+92 2    inc
+93 2    inc
+94 2    inc
+95 2    inc
+96 2    inc
+97 2    inc
+98 2    inc
+99 2    inc
+9a 2    inc
+9b -    //
+9b f    nop
+9c f    nop
+9d f    nop
+9e f    nop
+9f 8    reset // to pause simulation

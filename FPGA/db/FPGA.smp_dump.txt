@@ -1,0 +1,15 @@
+
+State Machine - |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|dpll_state
+Name dpll_state.11 dpll_state.10 dpll_state.00 dpll_state.01 
+dpll_state.01 0 0 0 0 
+dpll_state.00 0 0 1 1 
+dpll_state.10 0 1 0 1 
+dpll_state.11 1 0 0 1 
+
+State Machine - |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|state
+Name state.101 state.100 state.011 state.010 state.000 
+state.000 0 0 0 0 0 
+state.010 0 0 0 1 1 
+state.011 0 0 1 0 1 
+state.100 0 1 0 0 1 
+state.101 1 0 0 0 1 

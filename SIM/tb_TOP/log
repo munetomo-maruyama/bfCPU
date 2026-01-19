@@ -1,0 +1,21 @@
+VCD info: dumpfile tb.vcd opened for output.
+===== UART RxD ===== (IN ) at 0x02
+===== UART RxD ===== (IN ) at 0x03
+===== UART RxD ===== (IN ) at 0x04
+===== UART TxD ===== (OUT) at 0x06
+===== UART RxD ===== (IN ) at 0x05
+===== UART RxD ===== (IN ) at 0x06
+===== UART TxD ===== (OUT) at 0x14
+===== UART RxD ===== (IN ) at 0x07
+===== UART RxD ===== (IN ) at 0x08
+===== UART TxD ===== (OUT) at 0x2a
+===== UART RxD ===== (IN ) at 0x09
+===== UART RxD ===== (IN ) at 0x0a
+===== UART TxD ===== (OUT) at 0x48
+===== UART RxD ===== (IN ) at 0x0b
+===== UART RxD ===== (IN ) at 0x0c
+===== UART TxD ===== (OUT) at 0x6e
+===== UART RxD ===== (IN ) at 0x0d
+===== UART RxD ===== (IN ) at 0x0e
+***** SIMULATION TIMEOUT ***** at      50000
+./tb.sv:76: $finish called at 500105000 (10ps)

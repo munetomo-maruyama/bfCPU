@@ -1,0 +1,520 @@
+Timing Analyzer report for TOP
+Tue Jan 13 20:08:44 2026
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow 1200mV 85C Model Fmax Summary
+  7. Slow 1200mV 85C Model Setup Summary
+  8. Slow 1200mV 85C Model Hold Summary
+  9. Slow 1200mV 85C Model Recovery Summary
+ 10. Slow 1200mV 85C Model Removal Summary
+ 11. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1200mV 85C Model Metastability Summary
+ 13. Slow 1200mV 0C Model Fmax Summary
+ 14. Slow 1200mV 0C Model Setup Summary
+ 15. Slow 1200mV 0C Model Hold Summary
+ 16. Slow 1200mV 0C Model Recovery Summary
+ 17. Slow 1200mV 0C Model Removal Summary
+ 18. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 19. Slow 1200mV 0C Model Metastability Summary
+ 20. Fast 1200mV 0C Model Setup Summary
+ 21. Fast 1200mV 0C Model Hold Summary
+ 22. Fast 1200mV 0C Model Recovery Summary
+ 23. Fast 1200mV 0C Model Removal Summary
+ 24. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 25. Fast 1200mV 0C Model Metastability Summary
+ 26. Multicorner Timing Analysis Summary
+ 27. Board Trace Model Assignments
+ 28. Input Transition Times
+ 29. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 30. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 31. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 32. Setup Transfers
+ 33. Hold Transfers
+ 34. Report TCCS
+ 35. Report RSKM
+ 36. Unconstrained Paths Summary
+ 37. Clock Status Summary
+ 38. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++---------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                         ;
++-----------------------+---------------------------------------------------------+
+; Quartus Prime Version ; Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                                  ;
+; Revision Name         ; TOP                                                     ;
+; Device Family         ; MAX 10                                                  ;
+; Device Name           ; 10M50DAF484C7G                                          ;
+; Timing Models         ; Final                                                   ;
+; Delay Model           ; Combined                                                ;
+; Rise/Fall Delays      ; Enabled                                                 ;
++-----------------------+---------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.66        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  22.3%      ;
+;     Processor 3            ;  22.1%      ;
+;     Processor 4            ;  21.5%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------+
+; SDC File List                                     ;
++---------------+--------+--------------------------+
+; SDC File Path ; Status ; Read at                  ;
++---------------+--------+--------------------------+
+; FPGA.sdc      ; OK     ; Tue Jan 13 20:08:41 2026 ;
++---------------+--------+--------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                           ;
++------------+------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period  ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; CLK        ; Base ; 100.000 ; 10.0 MHz  ; 0.000 ; 50.000 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLK } ;
++------------+------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++-------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary              ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 16.87 MHz ; 16.87 MHz       ; CLK        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-------------------------------------+
+; Slow 1200mV 85C Model Setup Summary ;
++-------+--------+--------------------+
+; Clock ; Slack  ; End Point TNS      ;
++-------+--------+--------------------+
+; CLK   ; 40.727 ; 0.000              ;
++-------+--------+--------------------+
+
+
++------------------------------------+
+; Slow 1200mV 85C Model Hold Summary ;
++-------+-------+--------------------+
+; Clock ; Slack ; End Point TNS      ;
++-------+-------+--------------------+
+; CLK   ; 0.369 ; 0.000              ;
++-------+-------+--------------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; CLK   ; 49.643 ; 0.000                            ;
++-------+--------+----------------------------------+
+
+
+-----------------------------------------------
+; Slow 1200mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++-------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary               ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 17.09 MHz ; 17.09 MHz       ; CLK        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; CLK   ; 41.484 ; 0.000             ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Slow 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; CLK   ; 0.329 ; 0.000             ;
++-------+-------+-------------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; CLK   ; 49.631 ; 0.000                           ;
++-------+--------+---------------------------------+
+
+
+----------------------------------------------
+; Slow 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------+
+; Fast 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; CLK   ; 45.724 ; 0.000             ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Fast 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; CLK   ; 0.146 ; 0.000             ;
++-------+-------+-------------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; CLK   ; 49.344 ; 0.000                           ;
++-------+--------+---------------------------------+
+
+
+----------------------------------------------
+; Fast 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                          ;
++------------------+--------+-------+----------+---------+---------------------+
+; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+--------+-------+----------+---------+---------------------+
+; Worst-case Slack ; 40.727 ; 0.146 ; N/A      ; N/A     ; 49.344              ;
+;  CLK             ; 40.727 ; 0.146 ; N/A      ; N/A     ; 49.344              ;
+; Design-wide TNS  ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  CLK             ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++------------------+--------+-------+----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                   ;
++--------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin          ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++--------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; UART_TXD     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED          ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; QSPI_CS_N    ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; QSPI_SCK     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; QSPI_SIO[0]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; QSPI_SIO[1]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; QSPI_SIO[2]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; QSPI_SIO[3]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_TDO~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++--------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++--------------------------------------------------------------------------------+
+; Input Transition Times                                                         ;
++--------------------+-----------------------+-----------------+-----------------+
+; Pin                ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
++--------------------+-----------------------+-----------------+-----------------+
+; QSPI_CS_N          ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; QSPI_SCK           ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; QSPI_SIO[0]        ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; QSPI_SIO[1]        ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; QSPI_SIO[2]        ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; QSPI_SIO[3]        ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; RES_N              ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; CLK                ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; UART_RXD           ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TMS~       ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TCK~       ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TDI~       ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_nCONFIG~   ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_nSTATUS~   ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_CONF_DONE~ ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
++--------------------+-----------------------+-----------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin          ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; UART_TXD     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.38 V              ; -0.0059 V           ; 0.18 V                               ; 0.031 V                              ; 6.58e-10 s                  ; 8.63e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.38 V             ; -0.0059 V          ; 0.18 V                              ; 0.031 V                             ; 6.58e-10 s                 ; 8.63e-10 s                 ; No                        ; Yes                       ;
+; LED          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.77e-09 V                   ; 2.44 V              ; -0.098 V            ; 0.146 V                              ; 0.127 V                              ; 2.52e-10 s                  ; 3.89e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.77e-09 V                  ; 2.44 V             ; -0.098 V           ; 0.146 V                             ; 0.127 V                             ; 2.52e-10 s                 ; 3.89e-10 s                 ; No                        ; Yes                       ;
+; QSPI_CS_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.38 V              ; -0.00581 V          ; 0.181 V                              ; 0.03 V                               ; 6.58e-10 s                  ; 8.65e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.38 V             ; -0.00581 V         ; 0.181 V                             ; 0.03 V                              ; 6.58e-10 s                 ; 8.65e-10 s                 ; No                        ; Yes                       ;
+; QSPI_SCK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.38 V              ; -0.0059 V           ; 0.18 V                               ; 0.031 V                              ; 6.58e-10 s                  ; 8.63e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.38 V             ; -0.0059 V          ; 0.18 V                              ; 0.031 V                             ; 6.58e-10 s                 ; 8.63e-10 s                 ; No                        ; Yes                       ;
+; QSPI_SIO[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.38 V              ; -0.00618 V          ; 0.236 V                              ; 0.052 V                              ; 6.89e-10 s                  ; 9.91e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.38 V             ; -0.00618 V         ; 0.236 V                             ; 0.052 V                             ; 6.89e-10 s                 ; 9.91e-10 s                 ; No                        ; Yes                       ;
+; QSPI_SIO[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.37 V              ; -0.00683 V          ; 0.235 V                              ; 0.051 V                              ; 6.88e-10 s                  ; 9.9e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.37 V             ; -0.00683 V         ; 0.235 V                             ; 0.051 V                             ; 6.88e-10 s                 ; 9.9e-10 s                  ; No                        ; Yes                       ;
+; QSPI_SIO[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.38 V              ; -0.00618 V          ; 0.236 V                              ; 0.052 V                              ; 6.89e-10 s                  ; 9.91e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.38 V             ; -0.00618 V         ; 0.236 V                             ; 0.052 V                             ; 6.89e-10 s                 ; 9.91e-10 s                 ; No                        ; Yes                       ;
+; QSPI_SIO[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-08 V                   ; 2.37 V              ; -0.00683 V          ; 0.235 V                              ; 0.051 V                              ; 6.88e-10 s                  ; 9.9e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.95e-08 V                  ; 2.37 V             ; -0.00683 V         ; 0.235 V                             ; 0.051 V                             ; 6.88e-10 s                 ; 9.9e-10 s                  ; No                        ; Yes                       ;
+; ~ALTERA_TDO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.39e-08 V                   ; 2.39 V              ; -0.0409 V           ; 0.21 V                               ; 0.121 V                              ; 4.7e-10 s                   ; 5.93e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.39e-08 V                  ; 2.39 V             ; -0.0409 V          ; 0.21 V                              ; 0.121 V                             ; 4.7e-10 s                  ; 5.93e-10 s                 ; No                        ; Yes                       ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin          ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; UART_TXD     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.36 V              ; -0.00279 V          ; 0.143 V                              ; 0.015 V                              ; 8.42e-10 s                  ; 1.06e-09 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.36 V             ; -0.00279 V         ; 0.143 V                             ; 0.015 V                             ; 8.42e-10 s                 ; 1.06e-09 s                 ; No                        ; Yes                       ;
+; LED          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.58e-07 V                   ; 2.39 V              ; -0.0513 V           ; 0.126 V                              ; 0.134 V                              ; 2.72e-10 s                  ; 4.11e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 9.58e-07 V                  ; 2.39 V             ; -0.0513 V          ; 0.126 V                             ; 0.134 V                             ; 2.72e-10 s                 ; 4.11e-10 s                 ; Yes                       ; Yes                       ;
+; QSPI_CS_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.36 V              ; -0.00222 V          ; 0.143 V                              ; 0.015 V                              ; 8.41e-10 s                  ; 1.06e-09 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.36 V             ; -0.00222 V         ; 0.143 V                             ; 0.015 V                             ; 8.41e-10 s                 ; 1.06e-09 s                 ; No                        ; Yes                       ;
+; QSPI_SCK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.36 V              ; -0.00279 V          ; 0.143 V                              ; 0.015 V                              ; 8.42e-10 s                  ; 1.06e-09 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.36 V             ; -0.00279 V         ; 0.143 V                             ; 0.015 V                             ; 8.42e-10 s                 ; 1.06e-09 s                 ; No                        ; Yes                       ;
+; QSPI_SIO[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.36 V              ; -0.00306 V          ; 0.194 V                              ; 0.031 V                              ; 8.84e-10 s                  ; 1.2e-09 s                   ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.36 V             ; -0.00306 V         ; 0.194 V                             ; 0.031 V                             ; 8.84e-10 s                 ; 1.2e-09 s                  ; No                        ; Yes                       ;
+; QSPI_SIO[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.35 V              ; -0.00325 V          ; 0.194 V                              ; 0.03 V                               ; 8.84e-10 s                  ; 1.2e-09 s                   ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.35 V             ; -0.00325 V         ; 0.194 V                             ; 0.03 V                              ; 8.84e-10 s                 ; 1.2e-09 s                  ; No                        ; Yes                       ;
+; QSPI_SIO[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.36 V              ; -0.00306 V          ; 0.194 V                              ; 0.031 V                              ; 8.84e-10 s                  ; 1.2e-09 s                   ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.36 V             ; -0.00306 V         ; 0.194 V                             ; 0.031 V                             ; 8.84e-10 s                 ; 1.2e-09 s                  ; No                        ; Yes                       ;
+; QSPI_SIO[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.76e-06 V                   ; 2.35 V              ; -0.00325 V          ; 0.194 V                              ; 0.03 V                               ; 8.84e-10 s                  ; 1.2e-09 s                   ; No                         ; Yes                        ; 2.32 V                      ; 2.76e-06 V                  ; 2.35 V             ; -0.00325 V         ; 0.194 V                             ; 0.03 V                              ; 8.84e-10 s                 ; 1.2e-09 s                  ; No                        ; Yes                       ;
+; ~ALTERA_TDO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.97e-06 V                   ; 2.36 V              ; -0.0173 V           ; 0.144 V                              ; 0.094 V                              ; 6.44e-10 s                  ; 7.2e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.97e-06 V                  ; 2.36 V             ; -0.0173 V          ; 0.144 V                             ; 0.094 V                             ; 6.44e-10 s                 ; 7.2e-10 s                  ; No                        ; Yes                       ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin          ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; UART_TXD     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.72 V              ; -0.036 V            ; 0.26 V                               ; 0.2 V                                ; 4.68e-10 s                  ; 6.71e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 2.35e-07 V                  ; 2.72 V             ; -0.036 V           ; 0.26 V                              ; 0.2 V                               ; 4.68e-10 s                 ; 6.71e-10 s                 ; No                        ; Yes                       ;
+; LED          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 8.16e-08 V                   ; 2.92 V              ; -0.0276 V           ; 0.417 V                              ; 0.05 V                               ; 1.03e-10 s                  ; 2.51e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 8.16e-08 V                  ; 2.92 V             ; -0.0276 V          ; 0.417 V                             ; 0.05 V                              ; 1.03e-10 s                 ; 2.51e-10 s                 ; No                        ; Yes                       ;
+; QSPI_CS_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.72 V              ; -0.037 V            ; 0.262 V                              ; 0.199 V                              ; 4.69e-10 s                  ; 6.73e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 2.35e-07 V                  ; 2.72 V             ; -0.037 V           ; 0.262 V                             ; 0.199 V                             ; 4.69e-10 s                 ; 6.73e-10 s                 ; No                        ; Yes                       ;
+; QSPI_SCK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.72 V              ; -0.036 V            ; 0.26 V                               ; 0.2 V                                ; 4.68e-10 s                  ; 6.71e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 2.35e-07 V                  ; 2.72 V             ; -0.036 V           ; 0.26 V                              ; 0.2 V                               ; 4.68e-10 s                 ; 6.71e-10 s                 ; No                        ; Yes                       ;
+; QSPI_SIO[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.71 V              ; -0.0343 V           ; 0.325 V                              ; 0.133 V                              ; 4.93e-10 s                  ; 8.31e-10 s                  ; No                         ; No                         ; 2.62 V                      ; 2.35e-07 V                  ; 2.71 V             ; -0.0343 V          ; 0.325 V                             ; 0.133 V                             ; 4.93e-10 s                 ; 8.31e-10 s                 ; No                        ; No                        ;
+; QSPI_SIO[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.71 V              ; -0.034 V            ; 0.324 V                              ; 0.132 V                              ; 4.92e-10 s                  ; 8.3e-10 s                   ; No                         ; No                         ; 2.62 V                      ; 2.35e-07 V                  ; 2.71 V             ; -0.034 V           ; 0.324 V                             ; 0.132 V                             ; 4.92e-10 s                 ; 8.3e-10 s                  ; No                        ; No                        ;
+; QSPI_SIO[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.71 V              ; -0.0343 V           ; 0.325 V                              ; 0.133 V                              ; 4.93e-10 s                  ; 8.31e-10 s                  ; No                         ; No                         ; 2.62 V                      ; 2.35e-07 V                  ; 2.71 V             ; -0.0343 V          ; 0.325 V                             ; 0.133 V                             ; 4.93e-10 s                 ; 8.31e-10 s                 ; No                        ; No                        ;
+; QSPI_SIO[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.35e-07 V                   ; 2.71 V              ; -0.034 V            ; 0.324 V                              ; 0.132 V                              ; 4.92e-10 s                  ; 8.3e-10 s                   ; No                         ; No                         ; 2.62 V                      ; 2.35e-07 V                  ; 2.71 V             ; -0.034 V           ; 0.324 V                             ; 0.132 V                             ; 4.92e-10 s                 ; 8.3e-10 s                  ; No                        ; No                        ;
+; ~ALTERA_TDO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 1.68e-07 V                   ; 2.73 V              ; -0.0395 V           ; 0.362 V                              ; 0.109 V                              ; 3.11e-10 s                  ; 4.41e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 1.68e-07 V                  ; 2.73 V             ; -0.0395 V          ; 0.362 V                             ; 0.109 V                             ; 3.11e-10 s                 ; 4.41e-10 s                 ; No                        ; Yes                       ;
++--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLK        ; CLK      ; 39368091 ; 10       ; 21       ; 4        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLK        ; CLK      ; 39368091 ; 10       ; 21       ; 4        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 0     ; 0    ;
+; Unconstrained Input Port Paths  ; 0     ; 0    ;
+; Unconstrained Output Ports      ; 0     ; 0    ;
+; Unconstrained Output Port Paths ; 0     ; 0    ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; CLK    ; CLK   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Tue Jan 13 20:08:40 2026
+Info: Command: quartus_sta FPGA -c TOP
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (332104): Reading SDC File: 'FPGA.sdc'
+Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
+    Critical Warning (332169): From CLK (Rise) to CLK (Rise) (setup and hold)
+    Critical Warning (332169): From CLK (Fall) to CLK (Rise) (setup and hold)
+    Critical Warning (332169): From CLK (Rise) to CLK (Fall) (setup and hold)
+    Critical Warning (332169): From CLK (Fall) to CLK (Fall) (setup and hold)
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Info (332146): Worst-case setup slack is 40.727
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    40.727               0.000 CLK 
+Info (332146): Worst-case hold slack is 0.369
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.369               0.000 CLK 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 49.643
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    49.643               0.000 CLK 
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
+    Critical Warning (332169): From CLK (Rise) to CLK (Rise) (setup and hold)
+    Critical Warning (332169): From CLK (Fall) to CLK (Rise) (setup and hold)
+    Critical Warning (332169): From CLK (Rise) to CLK (Fall) (setup and hold)
+    Critical Warning (332169): From CLK (Fall) to CLK (Fall) (setup and hold)
+Info (332146): Worst-case setup slack is 41.484
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    41.484               0.000 CLK 
+Info (332146): Worst-case hold slack is 0.329
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.329               0.000 CLK 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 49.631
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    49.631               0.000 CLK 
+Info: Analyzing Fast 1200mV 0C Model
+Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
+    Critical Warning (332169): From CLK (Rise) to CLK (Rise) (setup and hold)
+    Critical Warning (332169): From CLK (Fall) to CLK (Rise) (setup and hold)
+    Critical Warning (332169): From CLK (Rise) to CLK (Fall) (setup and hold)
+    Critical Warning (332169): From CLK (Fall) to CLK (Fall) (setup and hold)
+Info (332146): Worst-case setup slack is 45.724
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    45.724               0.000 CLK 
+Info (332146): Worst-case hold slack is 0.146
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.146               0.000 CLK 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 49.344
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    49.344               0.000 CLK 
+Info (332101): Design is fully constrained for setup requirements
+Info (332101): Design is fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 13339 megabytes
+    Info: Processing ended: Tue Jan 13 20:08:44 2026
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:05
+
+

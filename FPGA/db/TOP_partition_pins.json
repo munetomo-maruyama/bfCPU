@@ -1,0 +1,53 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "UART_TXD",
+					"strict" : false
+				},
+				{
+					"name" : "LED",
+					"strict" : false
+				},
+				{
+					"name" : "QSPI_CS_N",
+					"strict" : false
+				},
+				{
+					"name" : "QSPI_SCK",
+					"strict" : false
+				},
+				{
+					"name" : "QSPI_SIO[0]",
+					"strict" : false
+				},
+				{
+					"name" : "QSPI_SIO[1]",
+					"strict" : false
+				},
+				{
+					"name" : "QSPI_SIO[2]",
+					"strict" : false
+				},
+				{
+					"name" : "QSPI_SIO[3]",
+					"strict" : false
+				},
+				{
+					"name" : "RES_N",
+					"strict" : false
+				},
+				{
+					"name" : "CLK",
+					"strict" : false
+				},
+				{
+					"name" : "UART_RXD",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,7 @@
+create_clock -name CLK -period 100 [get_ports {CLK}]
+set_input_delay -clock { CLK } 50 [get_ports {UART_RXD}]
+set_input_delay -clock { CLK } -clock_fall 50 [get_ports {QSPI_SIO[0] QSPI_SIO[1] QSPI_SIO[2] QSPI_SIO[3]}]
+set_output_delay -clock { CLK } 50 [get_ports {QSPI_SIO[0] QSPI_SIO[1] QSPI_SIO[2] QSPI_SIO[3] QSPI_CS_N QSPI_SCK UART_TXD}]
+set_false_path -from [get_ports {RES_N}]
+set_false_path -to [get_ports {QSPI_SCK}]
+set_false_path -to [get_ports {LED}]

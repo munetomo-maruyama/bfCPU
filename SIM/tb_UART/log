@@ -1,0 +1,3 @@
+VCD info: dumpfile tb.vcd opened for output.
+***** SIMULATION TIMEOUT ***** at      20000
+./tb.sv:75: $finish called at 200105000 (10ps)

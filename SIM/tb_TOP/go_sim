@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export DIR_RTL_TBCH=.
+export DIR_RTL_BODY=../../RTL
+
+iverilog -v -g2012 -o tb.vvp -c ${DIR_RTL_TBCH}/flist.txt -s tb
+vvp tb.vvp > log
+

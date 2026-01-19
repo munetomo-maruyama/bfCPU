@@ -1,0 +1,12 @@
++define+SIMULATION
++define+MYSIM
+
++incdir+${DIR_RTL_TBCH}
++incdir+${DIR_RTL_BODY}
++incdir+${DIR_RTL_BODY}/UART/sasc/trunk/rtl/verilog/
+
+${DIR_RTL_TBCH}/tb.sv
+${DIR_RTL_BODY}/UART/uart.sv
+${DIR_RTL_BODY}/UART/sasc/trunk/rtl/verilog/sasc_top.v
+${DIR_RTL_BODY}/UART/sasc/trunk/rtl/verilog/sasc_fifo4.v
+${DIR_RTL_BODY}/UART/sasc/trunk/rtl/verilog/sasc_brg.v

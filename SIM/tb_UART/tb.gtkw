@@ -1,0 +1,73 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Fri Dec 19 16:01:24 2025
+[*]
+[dumpfile] "/media/psf/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/SIM/tb_UART/tb.vcd"
+[dumpfile_mtime] "Fri Dec 19 16:01:17 2025"
+[dumpfile_size] 305460
+[savefile] "/media/psf/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/SIM/tb_UART/tb.gtkw"
+[timestart] 0
+[size] 1854 1121
+[pos] -1 -1
+*-26.431507 1450000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.U_UART.
+[treeopen] tb.U_UART.U_SASC_TOP.
+[treeopen] tb.U_UART.U_SASC_TOP.rx_fifo.
+[sst_width] 278
+[signals_width] 251
+[sst_expanded] 1
+[sst_vpaned_height] 337
+@22
+tb.tb_cycle_counter[31:0]
+@28
+tb.res
+tb.clk
+@22
+tb.seq[15:0]
+@28
+tb.U_UART.IO_REQ
+tb.U_UART.IO_WRITE
+@22
+tb.U_UART.IO_WDATA[7:0]
+tb.U_UART.IO_RDATA[7:0]
+@29
+tb.U_UART.IO_RDY
+@28
+tb.rdphase
+tb.wdphase
+@22
+tb.rdata[7:0]
+@28
+tb.U_UART.rdphase
+tb.U_UART.wdphase
+tb.U_UART.UART_TXD
+tb.U_UART.UART_RXD
+@22
+tb.U_UART.din[7:0]
+tb.U_UART.dout[7:0]
+@28
+tb.U_UART.we
+tb.U_UART.re
+tb.U_UART.tx_rdy
+tb.U_UART.rx_rdy
+tb.U_UART.sio_ce
+tb.U_UART.sio_ce_x4
+@22
+tb.U_UART.div0[7:0]
+tb.U_UART.div1[7:0]
+@28
+tb.U_UART.U_SASC_TOP.rxd_r
+@22
+tb.U_UART.U_SASC_TOP.rxr[9:0]
+tb.U_UART.U_SASC_TOP.rx_fifo.din[7:0]
+@28
+tb.U_UART.U_SASC_TOP.we_i
+tb.U_UART.U_SASC_TOP.load_e
+@22
+tb.U_UART.U_SASC_TOP.txd_p[7:0]
+@28
+tb.U_UART.U_SASC_TOP.full_o
+tb.U_UART.U_SASC_TOP.re_i
+[pattern_trace] 1
+[pattern_trace] 0
