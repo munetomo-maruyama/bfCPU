@@ -1,5 +1,5 @@
 Assembler report for TOP
-Tue Jan 13 20:08:39 2026
+Sun Jan 25 18:07:26 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -38,7 +38,7 @@ on the Quartus Prime software download page.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Jan 13 20:08:39 2026 ;
+; Assembler Status      ; Successful - Sun Jan 25 18:07:26 2026 ;
 ; Revision Name         ; TOP                                   ;
 ; Top-level Entity Name ; FPGA                                  ;
 ; Family                ; MAX 10                                ;
@@ -67,8 +67,8 @@ on the Quartus Prime software download page.
 +----------------+----------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                          ;
 +----------------+----------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x00327EAA                                                                       ;
-; Checksum       ; 0x00327EAA                                                                       ;
+; JTAG usercode  ; 0x003689BF                                                                       ;
+; Checksum       ; 0x003689BF                                                                       ;
 +----------------+----------------------------------------------------------------------------------+
 
 
@@ -78,15 +78,15 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Jan 13 20:08:35 2026
+    Info: Processing started: Sun Jan 25 18:07:23 2026
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off FPGA -c TOP
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 13261 megabytes
-    Info: Processing ended: Tue Jan 13 20:08:39 2026
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 13320 megabytes
+    Info: Processing ended: Sun Jan 25 18:07:26 2026
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Tue Jan 13 20:08:15 2026
+Analysis & Synthesis Status : Successful - Sun Jan 25 18:07:07 2026
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : TOP
 Top-level Entity Name : FPGA
 Family : MAX 10
-Total logic elements : 1,255
-    Total combinational functions : 1,062
-    Dedicated logic registers : 536
-Total registers : 536
+Total logic elements : 1,695
+    Total combinational functions : 1,360
+    Dedicated logic registers : 716
+Total registers : 716
 Total pins : 11
 Total virtual pins : 0
 Total memory bits : 0

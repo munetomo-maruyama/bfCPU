@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TOP
-Tue Jan 13 20:08:15 2026
+Sun Jan 25 18:07:07 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -53,15 +53,15 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jan 13 20:08:15 2026           ;
+; Analysis & Synthesis Status        ; Successful - Sun Jan 25 18:07:07 2026           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; TOP                                             ;
 ; Top-level Entity Name              ; FPGA                                            ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 1,255                                           ;
-;     Total combinational functions  ; 1,062                                           ;
-;     Dedicated logic registers      ; 536                                             ;
-; Total registers                    ; 536                                             ;
+; Total logic elements               ; 1,695                                           ;
+;     Total combinational functions  ; 1,360                                           ;
+;     Dedicated logic registers      ; 716                                             ;
+; Total registers                    ; 716                                             ;
 ; Total pins                         ; 11                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -200,20 +200,20 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,255     ;
+; Estimated Total logic elements              ; 1,695     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1062      ;
+; Total combinational functions               ; 1360      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 661       ;
-;     -- 3 input functions                    ; 208       ;
-;     -- <=2 input functions                  ; 193       ;
+;     -- 4 input functions                    ; 892       ;
+;     -- 3 input functions                    ; 274       ;
+;     -- <=2 input functions                  ; 194       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 939       ;
+;     -- normal mode                          ; 1237      ;
 ;     -- arithmetic mode                      ; 123       ;
 ;                                             ;           ;
-; Total registers                             ; 536       ;
-;     -- Dedicated logic registers            ; 536       ;
+; Total registers                             ; 716       ;
+;     -- Dedicated logic registers            ; 716       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 11        ;
@@ -221,9 +221,9 @@ on the Quartus Prime software download page.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 537       ;
-; Total fan-out                               ; 5751      ;
-; Average fan-out                             ; 3.54      ;
+; Maximum fan-out                             ; 717       ;
+; Total fan-out                               ; 7655      ;
+; Average fan-out                             ; 3.64      ;
 +---------------------------------------------+-----------+
 
 
@@ -232,12 +232,12 @@ on the Quartus Prime software download page.
 +----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node       ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                ; Entity Name ; Library Name ;
 +----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------+-------------+--------------+
-; |FPGA                            ; 1062 (0)            ; 536 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 11   ; 0            ; 0          ; |FPGA                                                              ; FPGA        ; work         ;
-;    |TOP:U_TOP|                   ; 1062 (6)            ; 536 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP                                                    ; TOP         ; work         ;
-;       |CACHE:U_CACHE|            ; 324 (324)           ; 220 (220)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|CACHE:U_CACHE                                      ; CACHE       ; work         ;
-;       |CPU:U_CPU|                ; 422 (422)           ; 78 (78)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|CPU:U_CPU                                          ; CPU         ; work         ;
-;       |QSPI_SRAM:U_RAM|          ; 158 (158)           ; 61 (61)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM                                    ; QSPI_SRAM   ; work         ;
-;       |UART:U_UART|              ; 152 (28)            ; 177 (28)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|UART:U_UART                                        ; UART        ; work         ;
+; |FPGA                            ; 1360 (0)            ; 716 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 11   ; 0            ; 0          ; |FPGA                                                              ; FPGA        ; work         ;
+;    |TOP:U_TOP|                   ; 1360 (6)            ; 716 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP                                                    ; TOP         ; work         ;
+;       |CACHE:U_CACHE|            ; 539 (539)           ; 400 (400)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|CACHE:U_CACHE                                      ; CACHE       ; work         ;
+;       |CPU:U_CPU|                ; 505 (505)           ; 78 (78)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|CPU:U_CPU                                          ; CPU         ; work         ;
+;       |QSPI_SRAM:U_RAM|          ; 156 (156)           ; 61 (61)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM                                    ; QSPI_SRAM   ; work         ;
+;       |UART:U_UART|              ; 154 (30)            ; 177 (28)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|UART:U_UART                                        ; UART        ; work         ;
 ;          |sasc_brg:BRG|          ; 31 (31)             ; 25 (25)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_brg:BRG                           ; sasc_brg    ; work         ;
 ;          |sasc_top:U_SASC_TOP|   ; 93 (40)             ; 124 (50)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP                    ; sasc_top    ; work         ;
 ;             |sasc_fifo4:rx_fifo| ; 25 (25)             ; 37 (37)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|sasc_fifo4:rx_fifo ; sasc_fifo4  ; work         ;
@@ -295,12 +295,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 536   ;
+; Total registers                              ; 716   ;
 ; Number of registers using Synchronous Clear  ; 47    ;
-; Number of registers using Synchronous Load   ; 48    ;
-; Number of registers using Asynchronous Clear ; 432   ;
+; Number of registers using Synchronous Load   ; 80    ;
+; Number of registers using Asynchronous Clear ; 612   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 437   ;
+; Number of registers using Clock Enable       ; 617   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -315,10 +315,10 @@ Encoding Type:  One-Hot
 ; TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|tx_bit_cnt[0] ; 5       ;
 ; TOP:U_TOP|QSPI_SRAM:U_RAM|QSPI_CS_N                     ; 2       ;
 ; TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|txf_empty_r   ; 1       ;
-; TOP:U_TOP|CPU:U_CPU|if_code_keep[0]                     ; 1       ;
 ; TOP:U_TOP|CPU:U_CPU|if_code_keep[1]                     ; 1       ;
 ; TOP:U_TOP|CPU:U_CPU|if_code_keep[2]                     ; 1       ;
 ; TOP:U_TOP|CPU:U_CPU|if_code_keep[3]                     ; 1       ;
+; TOP:U_TOP|CPU:U_CPU|if_code_keep[0]                     ; 1       ;
 ; TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|rx_bit_cnt[1] ; 5       ;
 ; TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|rx_bit_cnt[3] ; 3       ;
 ; TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|rxd_r1        ; 1       ;
@@ -331,41 +331,42 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|din[3]                            ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_rdata[4]               ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_repl_addr[8]                ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|if_mis_dphase_addr[2]           ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|if_hit_dphase_addr[0]           ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dm_hit_dphase_wdata[6]          ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dm_mis_dphase_wdata[7]          ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|seq[0]                              ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|if_mis_req_addr_pend[11]        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_rdata[9]               ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|din[0]                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_rdata[1]               ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_repl_addr[10]               ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|if_mis_dphase_addr[0]           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|if_hit_dphase_addr[3]           ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dm_hit_dphase_addr[2]           ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dm_mis_dphase_wdata[6]          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|seq[3]                              ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|if_mis_req_addr_pend[6]         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_rdata[12]              ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_rdata[21]              ;
 ; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|ptr[1]                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|indent[15]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|addr[6]                       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|indent[1]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|addr[12]                      ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|tx_bit_cnt[2] ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|hold_reg[4]   ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|rx_bit_cnt[2] ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|QSPI_SIO_E[2]                 ;
-; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_wdata[15]              ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dc_d[22]                        ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|seq[2]                        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|QSPI_SIO_E[1]                 ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|seq[1]                        ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_count[2]                    ;
-; 6:1                ; 15 bits   ; 60 LEs        ; 45 LEs               ; 15 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|pc[2]                               ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|qspi_txd[7]                   ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|tx_bit_cnt[0] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|rx_bit_cnt[1] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|aluinx[6]                           ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_req_addr[7]                 ;
+; 6:1                ; 15 bits   ; 60 LEs        ; 45 LEs               ; 15 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CPU:U_CPU|pc[3]                               ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dc_d0[29]                       ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|dc_d1[5]                        ;
+; 6:1                ; 24 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_pend_wdata[20]              ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|qspi_txd[0]                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|tx_bit_cnt[3] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA|TOP:U_TOP|UART:U_UART|sasc_top:U_SASC_TOP|rx_bit_cnt[3] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|aluinx[7]                           ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|bus_req_addr[11]                ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|QSPI_SRAM:U_RAM|Selector19                    ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|ir_data[7]                          ;
-; 9:1                ; 8 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|Mux5                                ;
-; 6:1                ; 13 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; No         ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|BUS_ADDR[9]                     ;
-; 9:1                ; 8 bits    ; 48 LEs        ; 40 LEs               ; 8 LEs                  ; No         ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|BUS_WDATA[3]                    ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|if_code[0]                          ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|dr_data[7]                          ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|ir_data[5]                          ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|Mux0                                ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; No         ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|BUS_ADDR[6]                     ;
+; 15:1               ; 8 bits    ; 80 LEs        ; 64 LEs               ; 16 LEs                 ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|dr_data[6]                          ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 48 LEs               ; 8 LEs                  ; No         ; |FPGA|TOP:U_TOP|CACHE:U_CACHE|BUS_WDATA[2]                    ;
+; 43:1               ; 4 bits    ; 112 LEs       ; 112 LEs              ; 0 LEs                  ; No         ; |FPGA|TOP:U_TOP|CPU:U_CPU|if_code[0]                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 
 
@@ -415,27 +416,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 11                          ;
-; cycloneiii_ff         ; 536                         ;
+; cycloneiii_ff         ; 716                         ;
 ;     CLR               ; 60                          ;
 ;     CLR SCLR          ; 16                          ;
 ;     ENA               ; 81                          ;
-;     ENA CLR           ; 277                         ;
+;     ENA CLR           ; 425                         ;
 ;     ENA CLR SCLR      ; 31                          ;
-;     ENA CLR SLD       ; 48                          ;
+;     ENA CLR SLD       ; 80                          ;
 ;     plain             ; 23                          ;
 ; cycloneiii_io_obuf    ; 6                           ;
-; cycloneiii_lcell_comb ; 1063                        ;
+; cycloneiii_lcell_comb ; 1361                        ;
 ;     arith             ; 123                         ;
 ;         2 data inputs ; 89                          ;
 ;         3 data inputs ; 34                          ;
-;     normal            ; 940                         ;
+;     normal            ; 1238                        ;
 ;         1 data inputs ; 11                          ;
-;         2 data inputs ; 94                          ;
-;         3 data inputs ; 174                         ;
-;         4 data inputs ; 661                         ;
+;         2 data inputs ; 95                          ;
+;         3 data inputs ; 240                         ;
+;         4 data inputs ; 892                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 24.20                       ;
-; Average LUT depth     ; 12.20                       ;
+; Max LUT depth         ; 25.00                       ;
+; Average LUT depth     ; 13.39                       ;
 +-----------------------+-----------------------------+
 
 
@@ -444,7 +445,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:09     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -454,7 +455,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Jan 13 20:07:45 2026
+    Info: Processing started: Sun Jan 25 18:06:36 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGA -c TOP
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -481,8 +482,8 @@ Info (12127): Elaborating entity "FPGA" for the top level hierarchy
 Info (12128): Elaborating entity "TOP" for hierarchy "TOP:U_TOP" File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/TOP/fpga.sv Line: 76
 Info (12128): Elaborating entity "CPU" for hierarchy "TOP:U_TOP|CPU:U_CPU" File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/TOP/top.sv Line: 98
 Info (12128): Elaborating entity "CACHE" for hierarchy "TOP:U_TOP|CACHE:U_CACHE" File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/TOP/top.sv Line: 133
-Warning (10036): Verilog HDL or VHDL warning at cache.sv(378): object "bus_req_data" assigned a value but never read File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/CACHE/cache.sv Line: 378
-Warning (10036): Verilog HDL or VHDL warning at cache.sv(410): object "bus_repl" assigned a value but never read File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/CACHE/cache.sv Line: 410
+Warning (10036): Verilog HDL or VHDL warning at cache.sv(520): object "bus_req_data" assigned a value but never read File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/CACHE/cache.sv Line: 520
+Warning (10036): Verilog HDL or VHDL warning at cache.sv(552): object "bus_repl" assigned a value but never read File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/CACHE/cache.sv Line: 552
 Info (12128): Elaborating entity "QSPI_SRAM" for hierarchy "TOP:U_TOP|QSPI_SRAM:U_RAM" File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/TOP/top.sv Line: 155
 Warning (10036): Verilog HDL or VHDL warning at qspi_sram.sv(60): object "addr_ovf" assigned a value but never read File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/QSPI_SRAM/qspi_sram.sv Line: 60
 Info (12128): Elaborating entity "UART" for hierarchy "TOP:U_TOP|UART:U_UART" File: C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/RTL/TOP/top.sv Line: 174
@@ -502,16 +503,16 @@ Info (17049): 5 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Mac/Home/Documents/CQ/ISHI_Kai/bfCPU/bfCPU/FPGA/output_files/TOP.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1320 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1762 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 2 output pins
     Info (21060): Implemented 6 bidirectional pins
-    Info (21061): Implemented 1309 logic cells
+    Info (21061): Implemented 1751 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 13238 megabytes
-    Info: Processing ended: Tue Jan 13 20:08:15 2026
-    Info: Elapsed time: 00:00:30
-    Info: Total CPU time (on all processors): 00:00:38
+    Info: Peak virtual memory: 13313 megabytes
+    Info: Processing ended: Sun Jan 25 18:07:07 2026
+    Info: Elapsed time: 00:00:31
+    Info: Total CPU time (on all processors): 00:00:35
 
 
 +------------------------------------------+
