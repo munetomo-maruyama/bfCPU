@@ -1,22 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
-[*] Mon Jan  5 11:12:56 2026
+[*] Sat Jan 24 13:30:53 2026
 [*]
 [dumpfile] "/home/taka/ISHI_Kai/bfCPU/bfCPU/SIM/tb_TOP/tb.vcd"
-[dumpfile_mtime] "Mon Jan  5 11:12:50 2026"
-[dumpfile_size] 14560060
+[dumpfile_mtime] "Sat Jan 24 13:30:07 2026"
+[dumpfile_size] 14404607
 [savefile] "/home/taka/ISHI_Kai/bfCPU/bfCPU/SIM/tb_TOP/tb.gtkw"
 [timestart] 0
-[size] 1854 1121
-[pos] -27 -24
-*-29.652769 33175000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1662 1005
+[pos] -1 -1
+*-29.907789 132850000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [treeopen] tb.U_FPGA.
 [treeopen] tb.U_FPGA.U_TOP.
 [sst_width] 278
 [signals_width] 365
 [sst_expanded] 1
-[sst_vpaned_height] 336
+[sst_vpaned_height] 296
 @22
 tb.tb_cycle_counter[31:0]
 @28
@@ -32,9 +32,8 @@ tb.U_FPGA.U_TOP.U_RAM.BUS_WRITE
 tb.U_FPGA.U_TOP.U_RAM.BUS_ADDR[15:0]
 tb.U_FPGA.U_TOP.U_RAM.BUS_WDATA[7:0]
 tb.U_FPGA.U_TOP.U_RAM.BUS_RDATA[7:0]
-@29
-tb.U_FPGA.U_TOP.U_RAM.BUS_RDY
 @28
+tb.U_FPGA.U_TOP.U_RAM.BUS_RDY
 tb.U_FPGA.QSPI_CS_N
 tb.U_FPGA.QSPI_SCK
 tb.U_FPGA.U_TOP.U_RAM.qspi_scke
@@ -47,6 +46,16 @@ tb.U_FPGA.U_TOP.U_RAM.seq[3:0]
 tb.U_FPGA.U_TOP.U_RAM.addr[15:0]
 @28
 tb.U_FPGA.U_TOP.U_RAM.addr_cont
+@200
+-CPU I/O Access
+@28
+tb.U_FPGA.U_TOP.U_CPU.IO_RDY
+tb.U_FPGA.U_TOP.U_CPU.IO_REQ
+tb.U_FPGA.U_TOP.U_CPU.IO_WRITE
+tb.U_FPGA.U_TOP.U_CPU.IO_ADDR[1:0]
+@22
+tb.U_FPGA.U_TOP.U_CPU.IO_WDATA[7:0]
+tb.U_FPGA.U_TOP.U_CPU.IO_RDATA[7:0]
 @200
 -UART
 @28
@@ -84,11 +93,6 @@ tb.U_FPGA.U_TOP.U_CPU.IF_REQ
 @22
 tb.U_FPGA.U_TOP.U_CPU.IF_ADDR[15:0]
 tb.U_FPGA.U_TOP.U_CPU.IF_CODE[3:0]
-@28
-tb.U_FPGA.U_TOP.U_CACHE.ic_v
-@22
-tb.U_FPGA.U_TOP.U_CACHE.ic_a[12:0]
-tb.U_FPGA.U_TOP.U_CACHE.ic_d[31:0]
 @200
 -CPU Data Access
 @28
@@ -99,21 +103,43 @@ tb.U_FPGA.U_TOP.U_CPU.DM_WRITE
 tb.U_FPGA.U_TOP.U_CPU.DM_ADDR[14:0]
 tb.U_FPGA.U_TOP.U_CPU.DM_WDATA[7:0]
 tb.U_FPGA.U_TOP.U_CPU.DM_RDATA[7:0]
-@28
-tb.U_FPGA.U_TOP.U_CACHE.dc_v
-@22
-tb.U_FPGA.U_TOP.U_CACHE.dc_a[12:0]
-tb.U_FPGA.U_TOP.U_CACHE.dc_d[31:0]
 @200
--CPU I/O Access
+-Cache Memory
 @28
-tb.U_FPGA.U_TOP.U_CPU.IO_RDY
-tb.U_FPGA.U_TOP.U_CPU.IO_REQ
-tb.U_FPGA.U_TOP.U_CPU.IO_WRITE
-tb.U_FPGA.U_TOP.U_CPU.IO_ADDR[1:0]
+tb.U_FPGA.U_TOP.U_CACHE.if_hit
+tb.U_FPGA.U_TOP.U_CACHE.ic_v0
+tb.U_FPGA.U_TOP.U_CACHE.ic_v1
+tb.U_FPGA.U_TOP.U_CACHE.ic_v2
+tb.U_FPGA.U_TOP.U_CACHE.ic_v3
 @22
-tb.U_FPGA.U_TOP.U_CPU.IO_WDATA[7:0]
-tb.U_FPGA.U_TOP.U_CPU.IO_RDATA[7:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_a0[10:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_a1[10:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_a2[10:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_a3[10:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_d0[31:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_d1[31:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_d2[31:0]
+tb.U_FPGA.U_TOP.U_CACHE.ic_d3[31:0]
+@28
+tb.U_FPGA.U_TOP.U_CACHE.dm_hit
+tb.U_FPGA.U_TOP.U_CACHE.dc_v0
+tb.U_FPGA.U_TOP.U_CACHE.dc_v1
+@22
+tb.U_FPGA.U_TOP.U_CACHE.dc_a0[11:0]
+tb.U_FPGA.U_TOP.U_CACHE.dc_a1[11:0]
+tb.U_FPGA.U_TOP.U_CACHE.dc_d0[31:0]
+tb.U_FPGA.U_TOP.U_CACHE.dc_d1[31:0]
+@28
+tb.U_FPGA.U_TOP.U_CACHE.dm_hit
+tb.U_FPGA.U_TOP.U_CACHE.dm_hit_dphase
+tb.U_FPGA.U_TOP.U_CACHE.dm_hit_dphase_addr[2:0]
+tb.U_FPGA.U_TOP.U_CACHE.dm_mis_req
+@22
+tb.U_FPGA.U_TOP.U_CACHE.dm_mis_dphase_update_data[31:0]
+tb.U_FPGA.U_TOP.U_CACHE.dm_mis_dphase_wdata[7:0]
+tb.U_FPGA.U_TOP.U_CACHE.dm_mis_dphase_writeback_data[31:0]
+@28
+tb.U_FPGA.U_TOP.U_CACHE.dm_hit_dphase
 @200
 -Cache BUS Access
 @28
@@ -125,9 +151,6 @@ tb.U_FPGA.U_TOP.U_CACHE.BUS_ADDR[15:0]
 tb.U_FPGA.U_TOP.U_CACHE.BUS_WDATA[7:0]
 tb.U_FPGA.U_TOP.U_CACHE.BUS_RDATA[7:0]
 @200
--Cache Memory
--
--
 -Data Memory
 @22
 tb.U_M23LC512.MemoryByte08000[7:0]
@@ -146,6 +169,22 @@ tb.U_M23LC512.MemoryByte0800C[7:0]
 tb.U_M23LC512.MemoryByte0800D[7:0]
 tb.U_M23LC512.MemoryByte0800E[7:0]
 tb.U_M23LC512.MemoryByte0800F[7:0]
+tb.U_M23LC512.MemoryByte08010[7:0]
+tb.U_M23LC512.MemoryByte08011[7:0]
+tb.U_M23LC512.MemoryByte08012[7:0]
+tb.U_M23LC512.MemoryByte08013[7:0]
+tb.U_M23LC512.MemoryByte08014[7:0]
+tb.U_M23LC512.MemoryByte08015[7:0]
+tb.U_M23LC512.MemoryByte08016[7:0]
+tb.U_M23LC512.MemoryByte08017[7:0]
+tb.U_M23LC512.MemoryByte08018[7:0]
+tb.U_M23LC512.MemoryByte08019[7:0]
+tb.U_M23LC512.MemoryByte0801A[7:0]
+tb.U_M23LC512.MemoryByte0801B[7:0]
+tb.U_M23LC512.MemoryByte0801C[7:0]
+tb.U_M23LC512.MemoryByte0801D[7:0]
+tb.U_M23LC512.MemoryByte0801E[7:0]
+tb.U_M23LC512.MemoryByte0801F[7:0]
 tb.U_M23LC512.MemoryByte00000[7:0]
 tb.U_M23LC512.MemoryByte00001[7:0]
 tb.U_M23LC512.MemoryByte00002[7:0]

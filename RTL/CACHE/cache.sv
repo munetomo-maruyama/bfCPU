@@ -61,7 +61,7 @@ module CACHE
 //===============================================================
 // Instruction Cache 
 //     Direct Map
-//     Entry = 1
+//     Entry = 4
 //     Line  = 4bytes = 8instructions
 //===============================================================
 //1
@@ -69,33 +69,45 @@ module CACHE
 logic if_slot; // Slot of Instruction Fetch
 //
 // I-Cache Body
-logic [12:0] ic_a; // Address Array, Upper 16-3=13bits
-logic [31:0] ic_d; // Data Array, 1line = 4bytes = 8instructions 
-logic        ic_v; // Valid Bit
+logic [10:0] ic_a0; // Address Array, Entry0, Upper 16-3-2=11bits
+logic [10:0] ic_a1; // Address Array, Entry1, Upper 16-3-2=11bits
+logic [10:0] ic_a2; // Address Array, Entry2, Upper 16-3-2=11bits
+logic [10:0] ic_a3; // Address Array, Entry3, Upper 16-3-2=11bits
+logic [31:0] ic_d0; // Data Array, Entry0, 1-line = 4bytes = 8instructions 
+logic [31:0] ic_d1; // Data Array, Entry1, 1-line = 4bytes = 8instructions 
+logic [31:0] ic_d2; // Data Array, Entry2, 1-line = 4bytes = 8instructions 
+logic [31:0] ic_d3; // Data Array, Entry3, 1-line = 4bytes = 8instructions 
+logic        ic_v0; // Valid Bit, Entry0
+logic        ic_v1; // Valid Bit, Entry1
+logic        ic_v2; // Valid Bit, Entry2
+logic        ic_v3; // Valid Bit, Entry3
 //
 // I-Cache Hit Access
 logic        if_hit;
 logic        if_hit_dphase;
-logic [ 2:0] if_hit_dphase_addr; // Address in a line
+logic [ 4:0] if_hit_dphase_addr; // Entry[4:3], Line[2:0]
 //
-assign if_hit = IF_REQ & ic_v & (ic_a == IF_ADDR[15:3]);
+assign if_hit = IF_REQ & ic_v0 & (IF_ADDR[4:3] == 2'b00) & (ic_a0 == IF_ADDR[15:5])
+              | IF_REQ & ic_v1 & (IF_ADDR[4:3] == 2'b01) & (ic_a1 == IF_ADDR[15:5])
+              | IF_REQ & ic_v2 & (IF_ADDR[4:3] == 2'b10) & (ic_a2 == IF_ADDR[15:5])
+              | IF_REQ & ic_v3 & (IF_ADDR[4:3] == 2'b11) & (ic_a3 == IF_ADDR[15:5]);
 //
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
     begin
         if_hit_dphase      <= 1'b0;
-        if_hit_dphase_addr <= 3'b000;
+        if_hit_dphase_addr <= 5'b00_000;
     end
     else if (if_hit & if_slot)
     begin
         if_hit_dphase      <= 1'b1;
-        if_hit_dphase_addr <= IF_ADDR[2:0];
+        if_hit_dphase_addr <= IF_ADDR[4:0];
     end
     else if (if_slot)
     begin
         if_hit_dphase      <= 1'b0;
-        if_hit_dphase_addr <= 3'b000;
+        if_hit_dphase_addr <= 5'b00_000;
     end
 end    
 //
@@ -132,47 +144,136 @@ end
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
-        ic_v <= 1'b0;
-    else if (if_mis_req & & if_slot)
-        ic_v <= 1'b1;
+    begin
+        ic_v0 <= 1'b0;
+        ic_v1 <= 1'b0;
+        ic_v2 <= 1'b0;
+        ic_v3 <= 1'b0;
+    end
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b00))
+        ic_v0 <= 1'b1;
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b01))
+        ic_v1 <= 1'b1;
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b10))
+        ic_v2 <= 1'b1;
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b11))
+        ic_v3 <= 1'b1;
 end
 //
 // I-Cache Address Array
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
-        ic_a <= 13'h0000;
-    else if (if_mis_req & if_slot)
     begin
-        ic_a <= IF_ADDR[15:3];
+        ic_a0 <= 11'h000;
+        ic_a1 <= 11'h000;
+        ic_a2 <= 11'h000;
+        ic_a3 <= 11'h000;
     end
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b00))
+        ic_a0 <= IF_ADDR[15:5];
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b01))
+        ic_a1 <= IF_ADDR[15:5];
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b10))
+        ic_a2 <= IF_ADDR[15:5];
+    else if (if_mis_req & if_slot & (IF_ADDR[4:3] == 2'b11))
+        ic_a3 <= IF_ADDR[15:5];
 end
 //
 // I-Cache Data Array
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
-        ic_d <= 32'h00000000;
-    else if (if_mis_dphase & if_slot)
     begin
-        ic_d <= if_mis_dphase_rdata;
+        ic_d0 <= 32'h00000000;
+        ic_d1 <= 32'h00000000;
+        ic_d2 <= 32'h00000000;
+        ic_d3 <= 32'h00000000;
     end
+    else if (if_mis_dphase & if_slot & (if_mis_dphase_addr[4:3] == 2'b00))
+        ic_d0 <= if_mis_dphase_rdata;
+    else if (if_mis_dphase & if_slot & (if_mis_dphase_addr[4:3] == 2'b01))
+        ic_d1 <= if_mis_dphase_rdata;
+    else if (if_mis_dphase & if_slot & (if_mis_dphase_addr[4:3] == 2'b10))
+        ic_d2 <= if_mis_dphase_rdata;
+    else if (if_mis_dphase & if_slot & (if_mis_dphase_addr[4:3] == 2'b11))
+        ic_d3 <= if_mis_dphase_rdata;
 end
 //
 // Generate Instruction Fetch Code
+logic [3:0] ic_d0_out;
+logic [3:0] ic_d1_out;
+logic [3:0] ic_d2_out;
+logic [3:0] ic_d3_out;
+//
+always @*
+begin
+    case (if_hit_dphase_addr[2:0])
+        3'b000  : ic_d0_out = ic_d0[ 3: 0];
+        3'b001  : ic_d0_out = ic_d0[ 7: 4];
+        3'b010  : ic_d0_out = ic_d0[11: 8];
+        3'b011  : ic_d0_out = ic_d0[15:12];
+        3'b100  : ic_d0_out = ic_d0[19:16];
+        3'b101  : ic_d0_out = ic_d0[23:20];
+        3'b110  : ic_d0_out = ic_d0[27:24];
+        3'b111  : ic_d0_out = ic_d0[31:28];
+        default : ic_d0_out = 4'b1111; // NOP
+    endcase
+end
+always @*
+begin
+    case (if_hit_dphase_addr[2:0])
+        3'b000  : ic_d1_out = ic_d1[ 3: 0];
+        3'b001  : ic_d1_out = ic_d1[ 7: 4];
+        3'b010  : ic_d1_out = ic_d1[11: 8];
+        3'b011  : ic_d1_out = ic_d1[15:12];
+        3'b100  : ic_d1_out = ic_d1[19:16];
+        3'b101  : ic_d1_out = ic_d1[23:20];
+        3'b110  : ic_d1_out = ic_d1[27:24];
+        3'b111  : ic_d1_out = ic_d1[31:28];
+        default : ic_d1_out = 4'b1111; // NOP
+    endcase
+end
+always @*
+begin
+    case (if_hit_dphase_addr[2:0])
+        3'b000  : ic_d2_out = ic_d2[ 3: 0];
+        3'b001  : ic_d2_out = ic_d2[ 7: 4];
+        3'b010  : ic_d2_out = ic_d2[11: 8];
+        3'b011  : ic_d2_out = ic_d2[15:12];
+        3'b100  : ic_d2_out = ic_d2[19:16];
+        3'b101  : ic_d2_out = ic_d2[23:20];
+        3'b110  : ic_d2_out = ic_d2[27:24];
+        3'b111  : ic_d2_out = ic_d2[31:28];
+        default : ic_d2_out = 4'b1111; // NOP
+    endcase
+end
+always @*
+begin
+    case (if_hit_dphase_addr[2:0])
+        3'b000  : ic_d3_out = ic_d3[ 3: 0];
+        3'b001  : ic_d3_out = ic_d3[ 7: 4];
+        3'b010  : ic_d3_out = ic_d3[11: 8];
+        3'b011  : ic_d3_out = ic_d3[15:12];
+        3'b100  : ic_d3_out = ic_d3[19:16];
+        3'b101  : ic_d3_out = ic_d3[23:20];
+        3'b110  : ic_d3_out = ic_d3[27:24];
+        3'b111  : ic_d3_out = ic_d3[31:28];
+        default : ic_d3_out = 4'b1111; // NOP
+    endcase
+end
+//
 always @*
 begin
     // Hit Access, Code from I-Cache
     if (if_hit_dphase & if_slot)
-        IF_CODE = (if_hit_dphase_addr[2:0] == 3'b000)? ic_d[ 3: 0]
-                : (if_hit_dphase_addr[2:0] == 3'b001)? ic_d[ 7: 4]
-                : (if_hit_dphase_addr[2:0] == 3'b010)? ic_d[11: 8]
-                : (if_hit_dphase_addr[2:0] == 3'b011)? ic_d[15:12]
-                : (if_hit_dphase_addr[2:0] == 3'b100)? ic_d[19:16]
-                : (if_hit_dphase_addr[2:0] == 3'b101)? ic_d[23:20]
-                : (if_hit_dphase_addr[2:0] == 3'b110)? ic_d[27:24]
-                : (if_hit_dphase_addr[2:0] == 3'b111)? ic_d[31:28]
+    begin   
+        IF_CODE = (if_hit_dphase_addr[4:3] == 2'b00)? ic_d0_out
+                : (if_hit_dphase_addr[4:3] == 2'b01)? ic_d1_out
+                : (if_hit_dphase_addr[4:3] == 2'b10)? ic_d2_out
+                : (if_hit_dphase_addr[4:3] == 2'b11)? ic_d3_out
                 : 4'hf; // NOP
+    end
     // Miss Access, Code from BUS
     else if (if_mis_dphase & if_slot)
         IF_CODE = (if_mis_dphase_addr[2:0] == 3'b000)? if_mis_dphase_rdata[ 3: 0]
@@ -194,7 +295,7 @@ assign IF_RDY = if_slot;
 //===============================================================
 // Data Cache 
 //     Direct Map, Write Back
-//     Entry = 1
+//     Entry = 2
 //     Line  = 4bytes
 //===============================================================
 //
@@ -202,19 +303,24 @@ assign IF_RDY = if_slot;
 logic dm_slot; // Slot of Data Memory Access
 //
 // D-Cache Body
-logic [12:0] dc_a; // Address Array, Upper 15-2=13bits
-logic [31:0] dc_d; // Data Array, 1line = 4bytes 
-logic        dc_v; // Valid Bit
+logic [11:0] dc_a0; // Address Array, Upper 15-2-1=12bits
+logic [11:0] dc_a1; // Address Array, Upper 15-2-1=12bits
+logic [31:0] dc_d0; // Data Array, 1-line = 4bytes 
+logic [31:0] dc_d1; // Data Array, 1-line = 4bytes 
+logic        dc_v0; // Valid Bit
+logic        dc_v1; // Valid Bit
 //
 // D-Cache Hit Access
 logic        dm_hit;
 logic        dm_hit_dphase;
 logic        dm_hit_dphase_write;
-logic [ 1:0] dm_hit_dphase_addr; // Address in a line
+logic [ 2:0] dm_hit_dphase_addr; // Entry[2], Line[1:0]
 logic [ 7:0] dm_hit_dphase_wdata;
-logic [31:0] dm_hit_dphase_update_data;
+logic [31:0] dm_hit_dphase_update_data0;
+logic [31:0] dm_hit_dphase_update_data1;
 //
-assign dm_hit = DM_REQ & dc_v & (dc_a == DM_ADDR[14:2]);
+assign dm_hit = DM_REQ & dc_v0 & ~DM_ADDR[2] & (dc_a0 == DM_ADDR[14:3])
+              | DM_REQ & dc_v1 &  DM_ADDR[2] & (dc_a1 == DM_ADDR[14:3]);
 //
 always_ff @(posedge CLK, posedge RES)
 begin
@@ -222,21 +328,21 @@ begin
     begin
         dm_hit_dphase       <= 1'b0;
         dm_hit_dphase_write <= 1'b0;
-        dm_hit_dphase_addr  <= 2'b00;
+        dm_hit_dphase_addr  <= 3'b0_00;
         dm_hit_dphase_wdata <= 8'h00;
     end
     else if (dm_hit & dm_slot)
     begin
         dm_hit_dphase       <= 1'b1;
         dm_hit_dphase_write <= DM_WRITE;
-        dm_hit_dphase_addr  <= DM_ADDR[1:0];
+        dm_hit_dphase_addr  <= DM_ADDR[2:0];
         dm_hit_dphase_wdata <= DM_WDATA;
     end
     else if (dm_slot)
     begin
         dm_hit_dphase       <= 1'b0;
         dm_hit_dphase_write <= 1'b0;
-        dm_hit_dphase_addr  <= 2'b00;
+        dm_hit_dphase_addr  <= 3'b0_00;
         dm_hit_dphase_wdata <= 8'h00;
     end
 end
@@ -258,8 +364,10 @@ logic [31:0] dm_mis_dphase_writeback_data;
 assign dm_mis_req       = DM_REQ & ~dm_hit;
 assign dm_mis_req_write = DM_WRITE;
 assign dm_mis_req_addr  = {1'b1, DM_ADDR};
-assign dm_mis_replace   = dm_mis_req & dc_v;      // if valid, need replace
-assign dm_mis_replace_addr = {1'b1, dc_a, 2'b00}; // replace target address
+assign dm_mis_replace   = dm_mis_req & dc_v0 & ~DM_ADDR[2]
+                        | dm_mis_req & dc_v1 &  DM_ADDR[2];   // if valid, need replace
+assign dm_mis_replace_addr = (~DM_ADDR[2])? {1'b1, dc_a0, 1'b0, 2'b00}
+                           :                {1'b1, dc_a1, 1'b1, 2'b00};  // replace target address
 //
 always_ff @(posedge CLK, posedge RES)
 begin
@@ -290,43 +398,71 @@ end
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
-        dc_v <= 1'b0;
-    else if (dm_mis_req & dm_slot)
-        dc_v <= 1'b1;
+    begin
+        dc_v0 <= 1'b0;
+        dc_v1 <= 1'b0;
+    end
+    else if (dm_mis_req & dm_slot & ~DM_ADDR[2])
+        dc_v0 <= 1'b1;
+    else if (dm_mis_req & dm_slot &  DM_ADDR[2])
+        dc_v1 <= 1'b1;
 end
 //
 // D-Cache Address Array
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
-        dc_a <= 13'h0000;
-    else if (dm_mis_req & dm_slot)
-        dc_a <= DM_ADDR[14:2];
+    begin
+        dc_a0 <= 12'h000;
+        dc_a1 <= 12'h000;
+    end
+    else if (dm_mis_req & dm_slot & ~DM_ADDR[2])
+        dc_a0 <= DM_ADDR[14:3];
+    else if (dm_mis_req & dm_slot &  DM_ADDR[2])
+        dc_a1 <= DM_ADDR[14:3];
 end
 //
 // D-Cache Data Array
 always_ff @(posedge CLK, posedge RES)
 begin
     if (RES)
-        dc_d <= 32'h00000000;
+    begin
+        dc_d0 <= 32'h00000000;
+        dc_d1 <= 32'h00000000;
+    end
     // Hit Access
-    else if (dm_hit_dphase & dm_hit_dphase_write & dm_slot)
-        dc_d <= dm_hit_dphase_update_data;
+    else if (dm_hit_dphase & dm_hit_dphase_write & dm_slot & ~dm_hit_dphase_addr[2])
+        dc_d0 <= dm_hit_dphase_update_data0;
+    else if (dm_hit_dphase & dm_hit_dphase_write & dm_slot &  dm_hit_dphase_addr[2])
+        dc_d1 <= dm_hit_dphase_update_data1;
     // Miss Access
-    else if (dm_mis_dphase & dm_mis_dphase_write & dm_slot)
-        dc_d <= dm_mis_dphase_update_data;
-    else if (dm_mis_dphase & dm_slot)
-        dc_d <= dm_mis_dphase_rdata;
+    else if (dm_mis_dphase & dm_mis_dphase_write & dm_slot & ~dm_mis_dphase_addr[2])
+        dc_d0 <= dm_mis_dphase_update_data;
+    else if (dm_mis_dphase & dm_mis_dphase_write & dm_slot &  dm_mis_dphase_addr[2])
+        dc_d1 <= dm_mis_dphase_update_data;
+    //
+    else if (dm_mis_dphase & dm_slot & ~dm_mis_dphase_addr[2])
+        dc_d0 <= dm_mis_dphase_rdata;
+    else if (dm_mis_dphase & dm_slot &  dm_mis_dphase_addr[2])
+        dc_d1 <= dm_mis_dphase_rdata;
 end
 //
 // Hit  : Update Data for D-Cache Data Array
 always @*
 begin
-    dm_hit_dphase_update_data = dc_d; // default
-    if (dm_hit_dphase_addr[1:0] == 2'b00) dm_hit_dphase_update_data[ 7: 0] = dm_hit_dphase_wdata;
-    if (dm_hit_dphase_addr[1:0] == 2'b01) dm_hit_dphase_update_data[15: 8] = dm_hit_dphase_wdata;
-    if (dm_hit_dphase_addr[1:0] == 2'b10) dm_hit_dphase_update_data[23:16] = dm_hit_dphase_wdata;
-    if (dm_hit_dphase_addr[1:0] == 2'b11) dm_hit_dphase_update_data[31:24] = dm_hit_dphase_wdata;
+    dm_hit_dphase_update_data0 = dc_d0; // default
+    if (dm_hit_dphase_addr[1:0] == 2'b00) dm_hit_dphase_update_data0[ 7: 0] = dm_hit_dphase_wdata;
+    if (dm_hit_dphase_addr[1:0] == 2'b01) dm_hit_dphase_update_data0[15: 8] = dm_hit_dphase_wdata;
+    if (dm_hit_dphase_addr[1:0] == 2'b10) dm_hit_dphase_update_data0[23:16] = dm_hit_dphase_wdata;
+    if (dm_hit_dphase_addr[1:0] == 2'b11) dm_hit_dphase_update_data0[31:24] = dm_hit_dphase_wdata;
+end
+always @*
+begin
+    dm_hit_dphase_update_data1 = dc_d1; // default
+    if (dm_hit_dphase_addr[1:0] == 2'b00) dm_hit_dphase_update_data1[ 7: 0] = dm_hit_dphase_wdata;
+    if (dm_hit_dphase_addr[1:0] == 2'b01) dm_hit_dphase_update_data1[15: 8] = dm_hit_dphase_wdata;
+    if (dm_hit_dphase_addr[1:0] == 2'b10) dm_hit_dphase_update_data1[23:16] = dm_hit_dphase_wdata;
+    if (dm_hit_dphase_addr[1:0] == 2'b11) dm_hit_dphase_update_data1[31:24] = dm_hit_dphase_wdata;
 end
 //
 // Miss : Update Data for D-Cache Data Array
@@ -344,10 +480,14 @@ always @*
 begin
     // Hit Access, Data from D-Cache
     if (dm_hit_dphase & ~dm_hit_dphase_write & dm_slot)
-        DM_RDATA = (dm_hit_dphase_addr[1:0] == 2'b00)? dc_d[ 7: 0]
-                 : (dm_hit_dphase_addr[1:0] == 2'b01)? dc_d[15: 8]
-                 : (dm_hit_dphase_addr[1:0] == 2'b10)? dc_d[23:16]
-                 : (dm_hit_dphase_addr[1:0] == 2'b11)? dc_d[31:24]
+        DM_RDATA = (dm_hit_dphase_addr[2:0] == 3'b0_00)? dc_d0[ 7: 0]
+                 : (dm_hit_dphase_addr[2:0] == 3'b0_01)? dc_d0[15: 8]
+                 : (dm_hit_dphase_addr[2:0] == 3'b0_10)? dc_d0[23:16]
+                 : (dm_hit_dphase_addr[2:0] == 3'b0_11)? dc_d0[31:24]
+                 : (dm_hit_dphase_addr[2:0] == 3'b1_00)? dc_d1[ 7: 0]
+                 : (dm_hit_dphase_addr[2:0] == 3'b1_01)? dc_d1[15: 8]
+                 : (dm_hit_dphase_addr[2:0] == 3'b1_10)? dc_d1[23:16]
+                 : (dm_hit_dphase_addr[2:0] == 3'b1_11)? dc_d1[31:24]
                  : 8'h00;
     else if (dm_mis_dphase & ~dm_mis_dphase_write & dm_slot)
         DM_RDATA = (dm_mis_dphase_addr[1:0] == 2'b00)? dm_mis_dphase_rdata[ 7: 0]
@@ -361,9 +501,11 @@ end
 //
 // Write Back Data to BUS
 assign dm_mis_dphase_writeback_data
-    = (dm_mis_req & dm_hit_dphase)? dm_hit_dphase_update_data
-    : (dm_mis_req                )? dc_d
-    : (dm_mis_dphase             )? dm_mis_dphase_update_data // ??? necessary ???
+    = (dm_mis_req & dm_hit_dphase & ~dm_mis_req_addr[2] & ~dm_hit_dphase_addr[2])? dm_hit_dphase_update_data0
+    : (dm_mis_req & dm_hit_dphase &  dm_mis_req_addr[2] &  dm_hit_dphase_addr[2])? dm_hit_dphase_update_data1
+    : (dm_mis_req & ~dm_mis_req_addr[2])? dc_d0
+    : (dm_mis_req &  dm_mis_req_addr[2])? dc_d1
+    : (dm_mis_dphase                   )? dm_mis_dphase_update_data // ??? necessary ???
     : 32'h00000000;
 //
 // Return Ready
