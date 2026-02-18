@@ -167,3 +167,42 @@ Example Log Output:
 00022 : PC=0x0c ROM[0x0c]=0x8 (RESET) --> PTR=0x01 RAM[0x01]=0x07(  7)
 ```
 
+## bfCPU Program Examples
+###Addition Program
+An example of an addition program is shown in the following listing. The file is located at `bfCPU/bfTool/samples/addition.asm` in the repository. Let the contents of the data memory starting from address PTR=0 be {c0, c1}. The program receives the augend and addend as byte data (binary values) from the UART using the in instruction and stores them in c0 and c1, respectively. Then, within a begin-end loop, it decrements the value in c0 while simultaneously incrementing the value in c1. Once the value in c0 reaches zero, the value in c1 represents the sum. Finally, it transmits the contents of address c1 (the binary value) via the UART.
+```asm
+in    // ptr=0
+p++   // increment ptr
+in    // ptr=1
+p--   // decrement ptr
+begin // Loop
+  dec // ptr=0
+  p++ // increment ptr
+  inc // ptr=1
+  p-- // decrement ptr
+end
+p++   // increment ptr
+out   // ptr=1
+
+reset // restart
+```
+
+### Hello World! Program
+This is the quintessential first program for any programming language. An example is shown in the listing below. The file is located at bfCPU/bfTool/samples/helloworld.asm. When executed, it sends the ASCII string "Hello World!\n" via the UART. The final newline code is 0x0A.
+```asm
+++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
+//
+reset // restart
+```
+
+###Other Programs
+Other sample programs are stored in the `bfCPU/bfTool/samples` directory of the repository:
+- multiplication.asm: Multiplication
+- inputdec.asm: Receives a decimal ASCII string via UART and converts it to a binary value.
+- printdec.asm: Converts a binary value to a decimal ASCII string and transmits it via UART.
+- tictactoe.asm: Tic-Tac-Toe game.
+- life.asm: Conway's Game of Life.
+I believe each of these programs is a high-effort masterpiece. Many other programs for the bfCPU (Brainfuck) architecture are also available online: [[esolangs]](https://esolangs.org/wiki/Brainfuck).
+
+
+
