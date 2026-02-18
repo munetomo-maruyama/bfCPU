@@ -3,7 +3,7 @@ The objective of this project is to design a **Turing-complete machine** for Tin
 
 ## Building the Turing-Complete bfCPU
 
-One of the most famous examples of a simple, yet fully Turing-complete machine is the architecture proposed in 1993 by Urban Müller of Switzerland, known as Brainf*ck (where * is 'u') [[WikibfCPU]](https://en.wikipedia.org). I have obscured one letter due to the somewhat indelicate nature of the name; in this project, I will refer to this CPU architecture as "bfCPU." The bfCPU is an 8-bit CPU with only eight commands. Remarkably, these few commands are sufficient to implement any arbitrary algorithm. We will actually design this CPU, implement it on an FPGA, and ultimately enjoy the process of turning it into silicon via Tiny Tapeout.
+One of the most famous examples of a simple, yet fully Turing-complete machine is the architecture proposed in 1993 by Urban Müller of Switzerland, known as Brainf*ck (where * is 'u') [[WikibfCPU]](https://en.wikipedia.org/wiki/Brainfuck). I have obscured one letter due to the somewhat indelicate nature of the name; in this project, I will refer to this CPU architecture as "bfCPU." The bfCPU is an 8-bit CPU with only eight commands. Remarkably, these few commands are sufficient to implement any arbitrary algorithm. We will actually design this CPU, implement it on an FPGA, and ultimately enjoy the process of turning it into silicon via Tiny Tapeout.
 
 ## The bfCPU Architecture
 
@@ -41,10 +41,10 @@ The original instruction notation for bfCPU consists of single characters shown 
 The following sections explain the operation of each instruction. After a reset, the bfCPU clears all contents of the data memory to zero, resets the PTR and PC to zero, and begins execution from the instruction at address 0 in the program memory.
 
 #### 【>】 (pinc/p++)
-Increments the data pointer (PTR) by one. The PTR will now point to the data memory cell immediately to the right in the architecture shown in <img src="335-Processor/bfcpu_architecture" alt="bfCPU Architecture">. After executing this instruction, the PC is incremented by one to proceed to the next instruction.
+Increments the data pointer (PTR) by one. The PTR will now point to the data memory cell immediately to the right. After executing this instruction, the PC is incremented by one to proceed to the next instruction.
 
 #### 【<】 (pdec/p--)
-Decrements the data pointer (PTR) by one. The PTR will now point to the data memory cell immediately to the left in the architecture shown in <img src="335-Processor/bfcpu_architecture" alt="bfCPU Architecture">. After executing this instruction, the PC is incremented by one to proceed to the next instruction.
+Decrements the data pointer (PTR) by one. The PTR will now point to the data memory cell immediately to the left. After executing this instruction, the PC is incremented by one to proceed to the next instruction.
 
 #### 【+】 (inc)
 Reads the data memory at the location pointed to by the PTR, adds 1, and writes the result back to the same location. In other words, it increments the content of the data memory pointed to by the PTR. After execution, the PC is incremented by one. The PTR remains unchanged.
