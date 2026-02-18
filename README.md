@@ -3,7 +3,7 @@ The objective of this project is to design a **Turing-complete machine** for Tin
 
 ## Building the Turing-Complete bfCPU
 
-One of the most famous examples of a simple, yet fully Turing-complete machine is the architecture proposed in 1993 by Urban Müller of Switzerland, known as Brainf*ck (where * is 'u') [[WikibfCPU]](https://en.wikipedia.org/wiki/Brainfuck). I have obscured one letter due to the somewhat indelicate nature of the name; in this project, I will refer to this CPU architecture as "bfCPU." The bfCPU is an 8-bit CPU with only eight commands. Remarkably, these few commands are sufficient to implement any arbitrary algorithm. We will actually design this CPU, implement it on an FPGA, and ultimately enjoy the process of turning it into silicon via Tiny Tapeout.
+One of the most famous examples of a simple, yet fully Turing-complete machine is the architecture proposed in 1993 by Urban Müller of Switzerland, known as Brainf*ck (where * is 'u') [[Wiki bfCPU]](https://en.wikipedia.org/wiki/Brainfuck). I have obscured one letter due to the somewhat indelicate nature of the name; in this project, I will refer to this CPU architecture as "bfCPU." The bfCPU is an 8-bit CPU with only eight commands. Remarkably, these few commands are sufficient to implement any arbitrary algorithm. We will actually design this CPU, implement it on an FPGA, and ultimately enjoy the process of turning it into silicon via Tiny Tapeout.
 
 ## The bfCPU Architecture
 
@@ -38,40 +38,6 @@ The original instruction notation for bfCPU consists of single characters shown 
 | 0x8 | NOP | - | - | No operation. |
 | 0xF | RESET | - | - | Reset the CPU state. |
 
-The following sections explain the operation of each instruction. After a reset, the bfCPU clears all contents of the data memory to zero, resets the PTR and PC to zero, and begins execution from the instruction at address 0 in the program memory.
-
-#### 【>】 (pinc/p++)
-Increments the data pointer (PTR) by one. The PTR will now point to the data memory cell immediately to the right. After executing this instruction, the PC is incremented by one to proceed to the next instruction.
-
-#### 【<】 (pdec/p--)
-Decrements the data pointer (PTR) by one. The PTR will now point to the data memory cell immediately to the left. After executing this instruction, the PC is incremented by one to proceed to the next instruction.
-
-#### 【+】 (inc)
-Reads the data memory at the location pointed to by the PTR, adds 1, and writes the result back to the same location. In other words, it increments the content of the data memory pointed to by the PTR. After execution, the PC is incremented by one. The PTR remains unchanged.
-
-#### 【-】 (dec)
-Reads the data memory at the location pointed to by the PTR, subtracts 1, and writes the result back to the same location. In other words, it decrements the content of the data memory pointed to by the PTR. After execution, the PC is incremented by one. The PTR remains unchanged.
-
-#### 【.】 (out)
-Reads the data memory at the location pointed to by the PTR and outputs one byte of data to the external interface. In this bfCPU design, it transmits one byte via UART. A wait state is automatically inserted until the UART transmission buffer becomes empty. After execution, the PC is incremented by one.
-
-#### 【,】 (in)
-Inputs one byte of data from the external interface and writes it to the data memory location pointed to by the PTR. In this bfCPU design, it receives one byte via UART. A wait state is automatically inserted until data is received in the UART buffer. After execution, the PC is incremented by one.
-
-#### 【[】 (begin)
-If the data in the memory pointed to by the PTR is zero, the CPU jumps to the instruction following the corresponding `end` (]) command at the same nesting depth, instead of proceeding to the next instruction (without incrementing the PC). If the data is non-zero, the PC is incremented by one, and execution proceeds to the next instruction. In other words, if the data is non-zero when the `begin` ([) command is executed, the instructions between this `begin` and its corresponding `end` (]) will be repeated.
-
-#### 【]】 (end)
-If the data in the memory pointed to by the PTR is non-zero, the CPU jumps back to the instruction following the corresponding `begin` ([) command at the same nesting depth, instead of proceeding to the next instruction. If the data is zero, the PC is incremented by one, and execution proceeds to the next instruction.
-
-Note that the `end` (]) command does not strictly need to check the data; it could simply jump back to the corresponding `begin` ([) command every time. However, in that case, if the data were zero, the CPU would jump back only to immediately jump forward again, causing unnecessary processing cycles. Therefore, this design of the `end` command also checks the data memory content.
-
-#### (reset)
-Resets the bfCPU. It clears all data memory to zero, resets the PTR and PC to zero, and starts execution from address 0 in the program memory.
-
-#### (nop)
-Performs no operation. The PC is incremented by one to proceed to the next instruction.
-
 ### How do the `begin` ([) and `end` (]) Instructions Handle Jumping?
 In a typical CPU, an instruction code consists of an "opcode," which indicates what the instruction does, and "operands," which specify the target of the operation—such as a memory address for data transfer, a constant value for addition, or the target address for a branch instruction. However, the 4-bit instruction code of the bfCPU contains only the opcode. Since the bfCPU only operates on the Data Pointer (PTR) and data memory, opcodes alone might seem sufficient. However, the lack of operands to define the branch targets for the `begin` ([) and `end` (]) instructions poses a challenge.
 
@@ -87,5 +53,41 @@ As described, since the `begin` and `end` instructions cannot jump to their dest
 
 ### Important Notes on bfCPU Programs
 The `begin` ([) and `end` (]) instructions can be nested to any depth, but they must always be correctly paired. Additionally, while the data width of each cell in the data memory is 8 bits (one byte), the values wrap around: adding 1 to `0xFF` results in `0x00`, and subtracting 1 from `0x00` results in `0xFF`. There are no flags to indicate the occurrence of a carry, borrow, or overflow.
+
+## bfCPU Assembler and Simulator: **bfTool**
+
+I have developed **bfTool**, a development utility for creating bfCPU programs and simulating instruction behavior on a PC. It is located in the `bfCPU/bfTool` directory within the repository.
+
+### How to Build bfTool
+
+The source code is stored in the `src` directory. Since it is written in standard C, you can compile it with `gcc`. In addition to `gcc`, you will also need `flex` and `bison`. You can build `bfTool` using the following command:
+
+```bash
+sudo apt install flex bison
+cd bfCPU/bfTool
+make
+```
+## Related Files for bfTool
+Some of the programs mentioned previously are included as sample programs in the `bfTool/samples` directory. The file extensions are defined as follows. In the assembly source files (.asm), you can write comments using double slashes (//), similar to C.
+
+- .asm: Assembly source file
+- .lis: Assembly list file
+- .hex: Assembly object file (Intel HEX format)
+- .v: Assembly object file (Verilog memory initialization format)
+- .sim: Simulation log file
+
+## How to Assemble a Program
+To assemble a source program, enter the following commands:
+``` bash
+cd bfTool/samples
+bfTool filename.asm
+```
+
+This will generate `filename.lis`, `filename.hex`, and `filename.v`.
+`filename.lis` displays the assembly results, mapping the address of each instruction to its corresponding code. Furthermore, single-character instructions are displayed as indented mnemonic instructions.
+`filename.hex` is the object code generated by the assembler. It follows the Intel HEX format, where data is arranged in bytes. Since bfCPU instruction codes are 4 bits wide, the code for the lower address is stored in the lower 4 bits of the byte, and the code for the higher address is stored in the upper 4 bits (little-endian). This `filename.hex` file is used as input when simulating instruction behavior with bfTool.
+`filename.v` is also an object code file generated by the assembler. This file is used to initialize the program memory when performing functional verification of the bfCPU system (written in SystemVerilog) through logic simulation.
+
+
 
 
