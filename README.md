@@ -20,11 +20,11 @@ The internal resources of the bfCPU consist solely of a Program Counter (PC) and
 Furthermore, there is an I/O mechanism for interfacing with the outside world. In the bfCPU designed for this project, external input is handled as received data via a UART (Universal Asynchronous Receiver/Transmitter), and external output is handled as transmitted data from the UART. The structure of the bfCPU is as simple as that.
 
 ### bfCPU Instruction Set
-The list of the bfCPU instruction set is shown in Table 1 below. The bfCPU originally features only eight instructions with opcodes (binary) from `0000` to `0111`. While 3 bits would suffice for eight instructions, the bfCPU designed here includes two additional instructions (`reset` and `nop`), resulting in a 4-bit instruction code length. All of these instruction codes consist only of an opcode indicating the operation; they have a simple structure with no operands to specify targets.
+The list of the bfCPU instruction set is shown in table below. The bfCPU originally features only eight instructions with opcodes (binary) from `0000` to `0111`. While 3 bits would suffice for eight instructions, the bfCPU designed here includes two additional instructions (`reset` and `nop`), resulting in a 4-bit instruction code length. All of these instruction codes consist only of an opcode indicating the operation; they have a simple structure with no operands to specify targets.
 
 The original instruction notation for bfCPU consists of single characters shown in the "Symbol" column of the table below (`<`, `>`, `+`, `-`, etc.). A program is formed by lining up these characters without gaps, or with occasional spaces and line breaks, which is why it is called an esoteric language. As described later, I have developed an assembler and instruction simulator called **bfTool** for bfCPU program development. This assembler accepts the original single-character bfCPU instructions, allowing the use of the vast number of publicly available bfCPU programs. However, it also supports the "Mnemonic" descriptions to improve readability. The "C-Equivalent" column represents the operation of each instruction in the C language. Note that while the original bfCPU uses ASCII characters directly as the program, the bfCPU designed in this article replaces each instruction with a 4-bit instruction code.
 
-**Table 1: bfCPU Instruction Set**
+**Table: bfCPU Instruction Set**
 | Instruction Code (Hex) | Mnemonic | Symbol | C-Equivalent | Description |
 | :--- | :--- | :---: | :--- | :--- |
 | 0x0 | INC_PTR | `>` | `++ptr;` | Increment the data pointer. |
@@ -230,6 +230,130 @@ A Raspberry Pi 5 board (Raspi) is used to write programs into the QSPI SRAM inst
 ### Input/Output via UART
 The bfCPU chip is equipped with a UART for input and output. The UART transmission and reception signals are connected directly to the Raspberry Pi, allowing strings and binary data to be handled through terminal software on the Raspi.
 The UART baud rate is not fixed, as it depends on the operating frequency of the bfCPU. While the Raspi is resetting the bfCPU chip, it writes the UART baud rate configuration value to the final address of the QSPI SRAM. Immediately after the reset is released, the bfCPU chip reads that address to configure the UART baud rate. Typically, the baud rate is set to 115,200 bps, and communication uses an 8-bit, no parity, 1-stop bit (8N1) format.
+
+## Resources of RTL and Simulation
+You can find all RTL files in `RTL` directory, and all Simulation files in `SIM` directory.
+When you want to simulate bfCPU system by Icarus Verilog, do following commands:
+```bash
+cd SIM
+./go_sim
+gtkwave tb.vcd tb.gtkw
+```
+
+## Implementing the bfCPU System on an FPGA
+### FPGA Board to be Used
+The designed bfCPU system will be implemented on an FPGA. The board used is the DE10-Lite (Official Website) from Terasic (Taiwan). It can be purchased through electronic component e-commerce sites.
+The onboard FPGA is the Altera MAX 10 series 10M50 (10M50DAF484C7G). It features 50K logic elements, 1,638 Kbits of block RAM, 144 multipliers (18x18), 4 PLLs, and 2 A/D converters (12-bit). Additionally, it contains 5,888 Kbits of internal non-volatile FLASH memory. This FLASH memory can be used for both FPGA configuration data and non-volatile storage of user data.
+
+### FPGA Design Data for bfCPU
+The FPGA design data for the bfCPU is stored in the `FPGA` directory within the GitHub Repository.
+
+### FPGA Pin Assignments
+Assign functions to the FPGA pins as shown in the table below. 
+
+**Table: FPGA External Pin Assignments**
+|Signal Name | I/O | Pin | Internal PUP | Function |
+| :--- | :--- | :--- | :--- | :--- |
+|CLK | input | Y5 | ON | Clock |
+|RES_N | input | Y6 | ON | Reset (Active Low) |
+|QSPI_CS_N | in/out | AA15 | ON | QSPI SRAM Chip Select (Active Low) with Hi-Z |
+|QSPI_SCK | in/out | V5 | ON | QSPI SRAM Serial Clock with Hi-Z |
+|QSPI_SIO | in/out | W10 | ON | QSPI SRAM Data I/O 3 with Hi-Z |
+|QSPI_SIO | in/out | W9 | ON | QSPI SRAM Data I/O 2 with Hi-Z |
+|QSPI_SIO | in/out | W8 | ON | QSPI SRAM Data I/O 1 with Hi-Z (SPI Serial In)|
+|QSPI_SIO | in/out | W7 | ON | QSPI SRAM Data I/O 0 with Hi-Z (SPI Serial Out)|
+|UART_RXD | input | Y3 | ON | UART Receive Data |
+|UART_TXD | output | Y4 | -	| UART Transmit Data |
+|LED | output | A8 | - | CPU Running Indicator |
+
+### Connecting the FPGA Board, Raspberry Pi, and QSPI SRAM
+Turn off the power to the FPGA board before connecting the FPGA board, Raspberry Pi, and QSPI SRAM. Please wire them as shown in the diagram below.
+An example of a setup using a breadboard and jumper wires is shown here:
+
+<img src="doc/image/fpga_system.png" alt="FPGA System of bfCPU" width="100%">
+<img src="doc/image/fpga_system_connection.png" alt="FPGA System Connection" width="100%">
+
+Caution: Since both the Raspberry Pi and the FPGA board output 3.3V and 5V power, misconnecting these can damage the devices or boards. Please double-check your wiring.
+
+### Setting Up the bfCPU Development Environment on Raspberry Pi
+Next, let's set up the bfCPU development environment on the Raspberry Pi. The following instructions assume that RASPBERRY PI OS (64-bit Linux) is running.
+
+#### Raspberry Pi Configuration
+The bfCPU system clock is generated using the Raspberry Pi's PWM function, and UART is used for data I/O. To enable these features, open /boot/firmware/config.txt with administrative privileges (using sudo) and append the following lines to the end of the file. Then, restart the Raspberry Pi.
+```text
+[all]
+dtoverlay=pwm-2chan
+dtparam=uart0=on
+```
+After rebooting, install the necessary libraries and related tools for the build process:
+```bash
+sudo apt install -y git autoconf autoconf-archive automake libtool pkg-config python3-dev libgpiod-dev gpiod minicom cutecom
+```
+#### bfTool : Building the bfCPU Development Tool
+The bfTool, which was described in the previous chapter, also runs on the Raspberry Pi. Download the bfCPU repository from here.
+```bash
+git clone https://github.com/munetomo-maruyama/bfCPU.git
+```
+Navigate to the bfCPU/bfTool directory. With gcc, flex, and bison already installed, you can build bfTool using the following commands:
+```bash
+cd bfCPU/bfTool
+make
+```
+Once built, add the bfTool executable to your $PATH environment variable so it can be executed from any directory. You can find sample programs in bfCPU/bfTool/samples to verify the operation as explained in the previous description.
+
+#### bfRun : Building the bfCPU Program Loading Tool
+The Raspberry Pi 5 (Raspi) is responsible for writing programs to the QSPI SRAM and booting the bfCPU. The utility for this task is **bfRun**. You can build it with the following commands:
+
+```bash
+cd bfCPU/Raspi5/bfRun
+make
+```
+After building, add the bfRun executable to your $PATH environment variable so that it can be executed from any directory.
+The bfRun tool performs the following tasks:
+- Supplies the system clock (approx. 10MHz) to the bfCPU system.
+- Resets the bfCPU system and writes the program and UART baud rate configuration values (DIV0 and DIV1) to the QSPI SRAM.
+- Verifies the contents of the program and data written to the QSPI SRAM.
+- Releases the bfCPU system reset and starts program execution!
+
+The Raspberry Pi GPIO pins used by this system are shown in the table below. The bfRun tool controls all pins except for the TXD and RXD pins used for UART communication.
+
+**Table: Raspberry Pi Pin Assignments**
+|Function | Pin Header | Raspi GPIO Name | Raspi GPIO Function |
+| :--- | :--- | :--- | :--- |
+| CLK | 12pin | GPIO18 | PWM_CLK (PWM0-CH2) |
+|RES_N | 16pin | GPIO23 | Open-drain Output, Internal Pull-up ON |
+|QSPI_CS_N | 27pin | GPIO0 | Open-drain Output, Internal Pull-up ON |
+|QSPI_SCK | 29pin | GPIO5 | Open-drain I/O, Internal Pull-up ON |
+|QSPI_SIO0 | 31pin | GPIO6 (QSPI_SI) | Open-drain I/O, Internal Pull-up ON |
+|QSPI_SIO1 | 33pin | GPIO13 | Open-drain I/O, Internal Pull-up ON |
+|QSPI_SIO2 | 35pin | GPIO19 | Open-drain I/O, Internal Pull-up ON |
+|QSPI_SIO3 | 37pin | GPIO26 | Open-drain I/O, Internal Pull-up ON |
+|TXD | 8pin | GPIO14 | UART TXD (Connects to bfCPU RXD) |
+|RXD | 10pin | GPIO15 | UART RXD (Connects to bfCPU TXD) |
+
+The clock supplied by the Raspberry Pi to the bfCPU system is generated using the PWM function. Although intended to be 10MHz, the actual output observed was approximately 8.3MHz to 8.4MHz. Therefore, bfRun accepts an approximate clock frequency as a parameter to determine the correct UART baud rate settings to be written to the final address of the QSPI SRAM.
+The command to run bfRun is as follows. Use the -c option to specify the clock frequency [Hz] output by the Raspberry Pi for the bfCPU. Finally, specify the binary file (Intel HEX format generated by bfTool) that you want to write to the QSPI SRAM. If the -c option is omitted, the baud rate settings are calculated assuming a 10MHz clock. Since the output frequency may vary between individual Raspberry Pi units, it is recommended to measure the actual clock frequency using an oscilloscope or Analog Discovery and specify it with the -c option.
+```bash
+cd bfCPU/Raspi5/bfRun
+bfRun -c 8300000 xxx.hex
+```
+When you execute bfRun, the following messages will be displayed, and the bfCPU system in the FPGA will start. To terminate, press Ctrl-C.
+```text
+$ bfRun -c 8300000 helloworld.hex 
+Read Hex File...Done.
+Decode Hex Format...Done.
+Start System Clock...Done.
+Set Serial SRAM in QSPI Mode...Done.
+Configure GPIO of Raspberry Pi...Done.
+Write Hex Data to SRAM...Done.
+Read Hex Data from SRAM...Done.
+Verify Hex Data in SRAM...OK.
+Set Baud Rate Data in SRAM (Freq=8300000 Baud=115200 div0=7 div1=2)...OK.
+Start the bfCPU System (Ctrl-C to Quit).
+```
+Please launch minicom or cutecom to comunicate with bfCPU.
+
+
 
 
 
