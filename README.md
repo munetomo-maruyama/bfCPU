@@ -195,7 +195,7 @@ This is the quintessential first program for any programming language. An exampl
 reset // restart
 ```
 
-###Other Programs
+### Other Programs
 Other sample programs are stored in the `bfCPU/bfTool/samples` directory of the repository:
 - multiplication.asm: Multiplication
 - inputdec.asm: Receives a decimal ASCII string via UART and converts it to a binary value.
