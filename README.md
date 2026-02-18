@@ -212,7 +212,7 @@ Let’s proceed with the actual design of the computer system based on the bfCPU
 ### Overall System Configuration
 The overall configuration of the bfCPU system is shown in the block diagram below. The interior of the chip or FPGA (bfCPU chip) incorporates the bfCPU core, cache memory, a QSPI SRAM interface, and a UART. For external memory, a single 512Kbit (64Kbyte) QSPI SRAM 23LC512 (Microchip) is connected.
 
-<img src="doc/image/bfcpu_system_block_diagram.png" alt="Block Diagram of bfCPU" width="50%">
+<img src="doc/image/bfcpu_system_block_diagram.png" alt="Block Diagram of bfCPU" width="100%">
 
 ### bfCPU Memory Map and Memory Configuration
 The memory map showing how the bfCPU chip allocates the external QSPI SRAM is illustrated in the following image. The bfCPU has two distinct memory spaces.
