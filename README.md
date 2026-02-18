@@ -204,5 +204,33 @@ Other sample programs are stored in the `bfCPU/bfTool/samples` directory of the 
 - life.asm: Conway's Game of Life.
 I believe each of these programs is a high-effort masterpiece. Many other programs for the bfCPU (Brainfuck) architecture are also available online: [[esolangs]](https://esolangs.org/wiki/Brainfuck).
 
+The bfCPU is recognized as a Turing-complete machine, meaning it is capable of performing any computational task possible for a computer. However, programs tend to become highly cryptic, and execution times can be quite long. Nevertheless, the process of solving these "puzzles" is profound and offers the ultimate form of intellectual entertainment.
+
+## Logical Design of the bfCPU System
+Let’s proceed with the actual design of the computer system based on the bfCPU architecture described above.
+
+### Overall System Configuration
+The overall configuration of the bfCPU system is shown in the block diagram below. The interior of the chip or FPGA (bfCPU chip) incorporates the bfCPU core, cache memory, a QSPI SRAM interface, and a UART. For external memory, a single 512Kbit (64Kbyte) QSPI SRAM 23LC512 (Microchip) is connected.
+
+<img src="doc/image/bfcpu_system_block_diagram.png" alt="Block Diagram of bfCPU" width="50%">
+
+### bfCPU Memory Map and Memory Configuration
+The memory map showing how the bfCPU chip allocates the external QSPI SRAM is illustrated in the following image. The bfCPU has two distinct memory spaces.
+
+- Instruction Space: Has a size of 4 bits wide × 65,536 words. It is accessed by the bfCPU's program counter (PC) using addresses 0x0000 to 0xFFFF.
+- Data Space: Has a size of 8 bits wide × 32,768 words. It is accessed by the bfCPU's data pointer (PTR) using addresses 0x0000 to 0x7FFF.
+
+Within the bfCPU chip, the IF (Instruction Fetch) bus accesses the instruction cache, while the DM (Data Memory) bus accesses the data cache. If a miss occurs in either the instruction or data cache, the external QSPI SRAM is accessed. If both caches attempt to access the QSPI SRAM simultaneously, priority is given to the data cache access, and the instruction cache access is made to wait. If instruction cache access were prioritized, instructions that cannot complete execution would accumulate within the bfCPU, leading to a system hang.
+
+When a cache miss occurs, the QSPI SRAM is accessed via the BUS bus. Within the 64Kbytes of the QSPI SRAM chip, the first 32Kbytes (addresses 0x0000 to 0x7FFF) are assigned to the instruction space, and the latter 32Kbytes (addresses 0x8000 to 0xFFFF) are assigned to the data space.
+
+### How to Write to QSPI SRAM
+A Raspberry Pi 5 board (Raspi) is used to write programs into the QSPI SRAM instruction memory. The Raspi supplies the clock and reset signals to the bfCPU chip. While the Raspi is holding the bfCPU chip in a reset state, the bfCPU chip sets its QSPI SRAM interface signals to a high-impedance (Hi-Z) state. During this time, the Raspi writes the program to the QSPI SRAM via GPIO operations. Afterward, the Raspi sets its own QSPI SRAM interface signals to Hi-Z and releases the reset, allowing the bfCPU chip to begin executing the program stored in the QSPI SRAM.
+
+### Input/Output via UART
+The bfCPU chip is equipped with a UART for input and output. The UART transmission and reception signals are connected directly to the Raspberry Pi, allowing strings and binary data to be handled through terminal software on the Raspi.
+The UART baud rate is not fixed, as it depends on the operating frequency of the bfCPU. While the Raspi is resetting the bfCPU chip, it writes the UART baud rate configuration value to the final address of the QSPI SRAM. Immediately after the reset is released, the bfCPU chip reads that address to configure the UART baud rate. Typically, the baud rate is set to 115,200 bps, and communication uses an 8-bit, no parity, 1-stop bit (8N1) format.
+
+
 
 
