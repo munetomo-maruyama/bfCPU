@@ -353,8 +353,10 @@ Start the bfCPU System (Ctrl-C to Quit).
 ```
 Please launch minicom or cutecom to comunicate with bfCPU.
 
+## Tiny Tapeout
+Please refer to [[Tiny Tapeout of bfCPU]](https://github.com/munetomo-maruyama/ttsky_bfCPU) for the repository of Tiny Tapeout (Skywater 130nm) of bfCPU.
 
-
+Have Fun!
 
 
 
