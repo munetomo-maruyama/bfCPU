@@ -256,12 +256,12 @@ Assign functions to the FPGA pins as shown in the table below.
 | :--- | :--- | :--- | :--- | :--- |
 |CLK | input | Y5 | ON | Clock |
 |RES_N | input | Y6 | ON | Reset (Active Low) |
-|QSPI_CS_N | in/out | AA15 | ON | QSPI SRAM Chip Select (Active Low) with Hi-Z |
-|QSPI_SCK | in/out | V5 | ON | QSPI SRAM Serial Clock with Hi-Z |
-|QSPI_SIO | in/out | W10 | ON | QSPI SRAM Data I/O 3 with Hi-Z |
-|QSPI_SIO | in/out | W9 | ON | QSPI SRAM Data I/O 2 with Hi-Z |
-|QSPI_SIO | in/out | W8 | ON | QSPI SRAM Data I/O 1 with Hi-Z (SPI Serial In)|
-|QSPI_SIO | in/out | W7 | ON | QSPI SRAM Data I/O 0 with Hi-Z (SPI Serial Out)|
+|QSPI_CS_N | in/out | AA15 | ON | QSPI SRAM Chip Select (Open Drain) (Active Low) |
+|QSPI_SCK | in/out | V5 | ON | QSPI SRAM Serial Clock (Open Drain) |
+|QSPI_SIO | in/out | W10 | ON | QSPI SRAM Data I/O 3 (Open Drain)|
+|QSPI_SIO | in/out | W9 | ON | QSPI SRAM Data I/O 2 (Open Drain)|
+|QSPI_SIO | in/out | W8 | ON | QSPI SRAM Data I/O 1 (Open Drain) (SPI Serial In)|
+|QSPI_SIO | in/out | W7 | ON | QSPI SRAM Data I/O 0 (Open Drain) (SPI Serial Out)|
 |UART_RXD | input | Y3 | ON | UART Receive Data |
 |UART_TXD | output | Y4 | -	| UART Transmit Data |
 |LED | output | A8 | - | CPU Running Indicator |
