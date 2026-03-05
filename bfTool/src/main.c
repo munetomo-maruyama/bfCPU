@@ -155,6 +155,7 @@ uint32_t Parse_Command_Line(int argc, char **argv, sOPTION *psOPTION)
     psOPTION->opt_obj = OPT_NO;
     psOPTION->opt_lis = OPT_NO;
     psOPTION->opt_log = OPT_NO;
+    psOPTION->opt_ver = OPT_NO;
     psOPTION->opt_verbose = OPT_NO;
     psOPTION->opt_ascii   = OPT_NO;
     psOPTION->opt_rom_byte = NULL;
