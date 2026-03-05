@@ -153,6 +153,7 @@ uint32_t Parse_Command_Line(int argc, char **argv, sOPTION *psOPTION)
     psOPTION->opt_rom = OPT_NO;
     psOPTION->opt_ram = OPT_NO;
     psOPTION->opt_obj = OPT_NO;
+    psOPTION->opt_ver = OPT_NO; // Work around for Core Dump in Hands-on-Seminar on 2026.03.05.
     psOPTION->opt_lis = OPT_NO;
     psOPTION->opt_log = OPT_NO;
     psOPTION->opt_verbose = OPT_NO;

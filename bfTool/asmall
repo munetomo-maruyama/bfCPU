@@ -1,0 +1,9 @@
+#!/bin/bash
+
+./bfTool samples/addition.asm
+./bfTool samples/helloworld.asm
+./bfTool samples/inputdec.asm
+./bfTool samples/life.asm
+./bfTool samples/multiplication.asm
+./bfTool samples/printdec.asm
+./bfTool samples/tictactoe.asm
